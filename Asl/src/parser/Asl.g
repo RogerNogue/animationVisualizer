@@ -100,8 +100,8 @@ instruction
         |   modification
         |   modifycolor
         |   modifystroke
-        |   modifysize
-        |   modifyradious
+        |   modifysize         //for quads and elypses
+        |   modifyradiouscircle
         |   modifyVisibility
         |   source
         |                   // Nothing
@@ -139,47 +139,47 @@ expr    :   boolterm (OR^ boolterm)*
 creation        :   CREATE ID ( quadrat | circle | elypse | line | polygon |text)
             ;
             
-quadrat         : QUAD DOUBLE DOUBLE DOUBLE DOUBLE
+quadrat         : QUAD '(' DOUBLE ',' DOUBLE ',' DOUBLE ',' DOUBLE')'
             ;
             
-circle          : CIRCLE DOUBLE DOUBLE DOUBLE
+circle          : CIRCLE '(' DOUBLE ',' DOUBLE ',' DOUBLE ')'
             ;
 
-elypse          : ELYPSE DOUBLE DOUBLE DOUBLE DOUBLE
+elypse          : ELYPSE '(' DOUBLE ',' DOUBLE ',' DOUBLE ',' DOUBLE')'
             ;
             
-line            : LINE DOUBLE ',' DOUBLE (DOUBLE ',' DOUBLE)+
+line            : LINE  '('DOUBLE ',' DOUBLE (DOUBLE ',' DOUBLE)+ ')'
             ;
 
-polygon         : POLYGON DOUBLE ',' DOUBLE (DOUBLE ',' DOUBLE)+
+polygon         : POLYGON '('DOUBLE ',' DOUBLE (DOUBLE ',' DOUBLE)+ ')'
             ;
 
 text            : TEXT STRING
             ;
 
-destruction     : DESTRUCTION ID
+destruction     : DESTRUCTION '('ID')'
         ;    
    
-movement        :   MOVE ID DOUBLE DOUBLE
+movement        :   MOVE '(' ID ',' DOUBLE ',' DOUBLE')'
         ;
             
-modifycolor    :   MODIFYCOLOR ID DOUBLE DOUBLE DOUBLE
+modifycolor    :   MODIFYCOLOR '(' ID ',' DOUBLE ',' DOUBLE ',' DOUBLE')'
         ;
         
 // width i RGB
-modifystroke    :   MODIFYSTROKE ID DOUBLE DOUBLE DOUBLE DOUBLE
+modifystroke    :   MODIFYSTROKE '('ID ',' DOUBLE ',' DOUBLE ',' DOUBLE ',' DOUBLE')'
         ;
         
-modifysize      :   MODIFYSIZE ID DOUBLE DOUBLE
+modifysize      :   MODIFYSIZE '('ID ',' DOUBLE ',' DOUBLE')'
         ;
         
-modifyradious   :   MODIFYRADIOUS ID DOUBLE
+modifyradious   :   MODIFYRADIOUS '('ID ',' DOUBLE')'
         ;
         
-modifyVisibility    :   MODIFYVISIBILITY ID DOUBLE
+modifyVisibility    :   MODIFYVISIBILITY '('ID ',' DOUBLE')'
         ;
             
-source          :  SOURCE STRING  (STRING)*
+source          :  SOURCE STRING  '(' (STRING)* ')'
         ;       
             
 

@@ -98,6 +98,11 @@ instruction
         |   destruction
         |   movement
         |   modification
+        |   modifycolor
+        |   modifystroke
+        |   modifysize
+        |   modifyradious
+        |   modifyVisibility
         |   source
         |                   // Nothing
         ;
@@ -151,7 +156,6 @@ polygon         : POLYGON DOUBLE ',' DOUBLE (DOUBLE ',' DOUBLE)+
 
 text            : TEXT STRING
             ;
-            
 
 destruction     : DESTRUCTION ID
         ;    
@@ -159,10 +163,23 @@ destruction     : DESTRUCTION ID
 movement        :   MOVE ID DOUBLE DOUBLE
         ;
             
-modification    :   boolterm (OR^ boolterm)*
+modifycolor    :   MODIFYCOLOR ID DOUBLE DOUBLE DOUBLE
+        ;
+        
+// width i RGB
+modifystroke    :   MODIFYSTROKE ID DOUBLE DOUBLE DOUBLE DOUBLE
+        ;
+        
+modifysize      :   MODIFYSIZE ID DOUBLE DOUBLE
+        ;
+        
+modifyradious   :   MODIFYRADIOUS ID DOUBLE
+        ;
+        
+modifyVisibility    :   MODIFYVISIBILITY ID DOUBLE
         ;
             
-source          :   boolterm (OR^ boolterm)*
+source          :  SOURCE STRING  (STRING)*
         ;       
             
 
@@ -229,9 +246,16 @@ READ	: 'read' ;
 WRITE	: 'write' ;
 
 
-CREATE	: 'Create' ;
-DESTRUCTION: 'Destruction';
-MOVE: 'Move';
+CREATE	            : 'Create' ;
+DESTRUCTION         : 'Destruction';
+MOVE                : 'Move';
+MODIFYCOLOR         : 'ModifyColor';
+MODIFYSTROKE        : 'ModifyStroke';
+MODIFYSIZE          : 'ModifySize';
+MODIFYRADIOUS       : 'ModifyRadious';
+MODIFYVISIBILITY    : 'ModifyVisibility';
+SOURCE              : 'Source';
+
 
 QUAD    : 'Quad' ;
 ELYPSE  : 'Elypse';

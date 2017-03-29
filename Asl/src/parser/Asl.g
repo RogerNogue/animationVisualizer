@@ -135,22 +135,22 @@ expr    :   boolterm (OR^ boolterm)*
         ;
 
 
-creation        :   CREATE ID ( quadrat | circle | elypse | line | polygon |text)
+creation        :   CREATE^ ID ( quadrat | circle | elypse | line | polygon |text)
             ;
 
-quadrat         : QUAD '(' DOUBLE ',' DOUBLE ',' DOUBLE ',' DOUBLE')'
+quadrat         : QUAD^ '('! DOUBLE ','! DOUBLE ','! DOUBLE ','! DOUBLE')'!
             ;
 
-circle          : CIRCLE '(' DOUBLE ',' DOUBLE ',' DOUBLE ')'
+circle          : CIRCLE^ '('! DOUBLE ','! DOUBLE ','! DOUBLE ')'!
             ;
 
-elypse          : ELYPSE '(' DOUBLE ',' DOUBLE ',' DOUBLE ',' DOUBLE')'
+elypse          : ELYPSE^ '('! DOUBLE ','! DOUBLE ','! DOUBLE ','! DOUBLE')'!
             ;
 
-line            : LINE  '('DOUBLE ',' DOUBLE (DOUBLE ',' DOUBLE)+ ')'
+line            : LINE^  '('! DOUBLE ','! DOUBLE (DOUBLE ','! DOUBLE)+ ')'!
             ;
 
-polygon         : POLYGON '('DOUBLE ',' DOUBLE (DOUBLE ',' DOUBLE)+ ')'
+polygon         : POLYGON^ '('DOUBLE ',' DOUBLE (DOUBLE ',' DOUBLE)+ ')'
             ;
 
 text            : TEXT STRING
@@ -159,7 +159,7 @@ text            : TEXT STRING
 destruction     : DESTRUCTION '('ID')'
         ;
 
-movement        :   MOVE '(' ID ',' DOUBLE ',' DOUBLE')'
+movement        :   MOVE^ '('! ID ','! DOUBLE ','! DOUBLE')'!
         ;
 
 modifycolor    :   MODIFYCOLOR '(' ID ',' DOUBLE ',' DOUBLE ',' DOUBLE')'

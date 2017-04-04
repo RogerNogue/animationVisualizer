@@ -153,7 +153,7 @@ line            : LINE^  '('! atom (','! atom)* ')'!
 polygon         : POLYGON^ '('! atom (','! atom)* ')'!
             ;
 
-text            : TEXT^ STRING
+text            : TEXT^ '('! atom ','! atom ','! STRING ')'!
             ;
 
 destruction     : DESTRUCTION^ '('! ID')'! 
@@ -178,7 +178,7 @@ modifyradious   :   MODIFYRADIOUS '(' ID ','  A1=atom')' -> ^(MODIFYRADIOUS ID ^
 modifyVisibility    :   MODIFYVISIBILITY '(' ID ','  A1=atom')' -> ^(MODIFYVISIBILITY ID ^(PARAMS $A1))
         ;
 
-source          :  SOURCE^ STRING  '('!  (STRING)* ')'! 
+source          :  SOURCE^ STRING  '('!  atom (','! atom )* ')'! 
         ;
 
 

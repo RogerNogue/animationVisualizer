@@ -138,47 +138,47 @@ expr    :   boolterm (OR^ boolterm)*
 creation        :   CREATE^ ID ( quadrat | circle | elypse | line | polygon |text)
             ;
 
-quadrat         : QUAD^ '('! DOUBLE ','! DOUBLE ','! DOUBLE ','! DOUBLE')'!
+quadrat         : QUAD^ '('! atom ','! atom ','! atom ','! atom')'!
             ;
 
-circle          : CIRCLE^ '('! DOUBLE ','! DOUBLE ','! DOUBLE ')'!
+circle          : CIRCLE^ '('! atom ','! atom ','! atom ')'!
             ;
 
-elypse          : ELYPSE^ '('! DOUBLE ','! DOUBLE ','! DOUBLE ','! DOUBLE')'!
+elypse          : ELYPSE^ '('! atom ','! atom ','! atom ','! atom')'!
             ;
 
-line            : LINE^  '('! DOUBLE ','! DOUBLE (DOUBLE ','! DOUBLE)+ ')'!
+line            : LINE^  '('! atom (','! atom)* ')'!
             ;
 
-polygon         : POLYGON^ '('DOUBLE ',' DOUBLE (DOUBLE ',' DOUBLE)+ ')'
+polygon         : POLYGON^ '('! atom (','! atom)* ')'!
             ;
 
-text            : TEXT STRING
+text            : TEXT^ STRING
             ;
 
-destruction     : DESTRUCTION '('ID')'
+destruction     : DESTRUCTION^ '('! ID')'! 
         ;
 
-movement        :   MOVE^ '('! ID ','! DOUBLE ','! DOUBLE')'!
+movement        :   (MOVE '(' ID ',' A1=atom ',' A2=atom')') -> ^(MOVE ID ^(PARAMS $A1 $A2))
         ;
 
-modifycolor    :   MODIFYCOLOR '(' ID ',' DOUBLE ',' DOUBLE ',' DOUBLE')'
+modifycolor     :   (MODIFYCOLOR '('  ID ','  A1=atom ','  A2=atom ','  A3=atom')') -> ^(MODIFYCOLOR ID ^(PARAMS $A1 $A2 $A3))
         ;
 
 // width i RGB
-modifystroke    :   MODIFYSTROKE '('ID ',' DOUBLE ',' DOUBLE ',' DOUBLE ',' DOUBLE')'
+modifystroke    :   (MODIFYSTROKE '(' ID ','  A1=atom ','  A2=atom ','  A3=atom ','  A4=atom')') -> ^(MODIFYSTROKE ID ^(PARAMS $A1 $A2 $A3 $A4))
         ;
 
-modifysize      :   MODIFYSIZE '('ID ',' DOUBLE ',' DOUBLE')'
+modifysize      :   (MODIFYSIZE '(' ID ','  A1=atom ','  A2=atom')') -> ^(MODIFYSIZE ID ^(PARAMS $A1 $A2))
         ;
 
-modifyradious   :   MODIFYRADIOUS '('ID ',' DOUBLE')'
+modifyradious   :   MODIFYRADIOUS '(' ID ','  A1=atom')' -> ^(MODIFYRADIOUS ID ^(PARAMS $A1))
         ;
 
-modifyVisibility    :   MODIFYVISIBILITY '('ID ',' DOUBLE')'
+modifyVisibility    :   MODIFYVISIBILITY '(' ID ','  A1=atom')' -> ^(MODIFYVISIBILITY ID ^(PARAMS $A1))
         ;
 
-source          :  SOURCE STRING  '(' (STRING)* ')'
+source          :  SOURCE^ STRING  '('!  (STRING)* ')'! 
         ;
 
 
@@ -203,6 +203,7 @@ factor  :   (NOT^ | PLUS^ | MINUS^)? atom
 // in parenthesis
 atom    :   ID 
         |   INT
+        |   DOUBLE
         |   (b=TRUE | b=FALSE)  -> ^(BOOLEAN[$b,$b.text])
         |   funcall
         |   '('! expr ')'!
@@ -257,6 +258,7 @@ SOURCE              : 'Source';
 
 
 QUAD    : 'Quad' ;
+CIRCLE  : 'Circle' ;
 ELYPSE  : 'Elypse';
 LINE    : 'Line';
 POLYGON : 'Polygon';

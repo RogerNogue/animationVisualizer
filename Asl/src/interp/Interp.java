@@ -298,6 +298,58 @@ public class Interp {
             case AslLexer.FUNCALL:
                 executeFunction(t.getChild(0).getText(), t.getChild(1));
                 return null;
+                
+            /** our new cases*/
+            //object creation
+            case AslLexer.CREATE:
+                switch (t.getChild(1).getType())) {
+                    case AslLexer.QUAD:
+                        
+                        return null;
+                    case AslLexer.CIRCLE:
+                    
+                        return null;
+                    case AslLexer.ELYPSE:
+
+                        return null;
+                    case AslLexer.LINE:
+                    
+                        return null;
+                    case AslLexer.POLYGON:
+                    
+                        return null;
+                    case AslLexer.TEXT:
+                    
+                        return null;
+                    default: assert false; // Should never happen
+                return null;
+            //object delete
+            case ASlLexer.DESTRUCTION:
+            
+                return null;
+            //object modification
+            case ASlLexer.MOVE:
+            
+                return null;
+            case ASlLexer.MODIFYCOLOR:
+            
+                return null;
+            case ASlLexer.MODIFYSTROKE:
+            
+                return null;
+            case ASlLexer.MODIFYSIZE:
+            
+                return null;
+            case ASlLexer.MODIFYRADIOUS:
+            
+                return null;
+            case ASlLexer.MODIFYVISIBILITY:
+            
+                return null;
+            //script
+            case ASlLexer.SOURCE:
+            
+                return null;
 
             default: assert false; // Should never happen
         }

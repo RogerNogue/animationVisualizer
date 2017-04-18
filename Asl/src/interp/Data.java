@@ -38,17 +38,65 @@ package interp;
  */
 
 import parser.*;
+import java.util.ArrayList;
 
 public class Data {
     /** Types of data */
-    public enum Type {VOID, BOOLEAN, INTEGER;}
+    public enum Type {VOID, BOOLEAN, INTEGER, DOUBLE, QUAD, CIRCLE, ELYPSE, LINE, POLYGON, TEXT;}
 
     /** Type of data*/
     private Type type;
 
     /** Value of the data */
     private int value; 
-
+    
+    private double x1;
+    private double y1;
+    private double x2;
+    private double y2;
+    private double radx;
+    private double rady;
+    
+    private ArrayList vals = new ArrayList();
+    
+    private String tex;
+    
+    private void setQuadValues(double px1, double py1, double px2, double py2){
+        type = Type.QUAD;
+        x1 = px1;
+        y1 = py1;
+        x2 = px2;
+        y2 = py2;
+    }
+    private void setCircleValues(double px, double py, double r){
+        type = Type.CIRCLE;
+        x1 = px;
+        y1 = py;
+        radx = rady = r;
+    }
+    private void setElypseValues(double px, double py, double rx, double ry){
+        type = Type.ELYPSE;
+        x1 = px;
+        y1 = py;
+        radx = rx;
+        rady = ry;
+    }
+    private void setLineValues(ArrayList values){
+        type = Type.LINE;
+        vals = values;
+    }
+    private void setPolygonValues(ArrayList values){
+        type = Type.POLYGON;
+        vals = values;
+    }
+    private void setTextValues(String text, double px, double py){
+        type = Type.TEXT;
+        tex = text;
+        x1 = px;
+        y1 = py;
+    }
+    
+    
     /** Constructor for integers */
     Data(int v) { type = Type.INTEGER; value = v; }
 
@@ -60,6 +108,33 @@ public class Data {
 
     /** Copy constructor */
     Data(Data d) { type = d.type; value = d.value; }
+    
+    /** Creation of animation types*/
+    
+    public void CreateQuad(double px1, double py1, double px2, double py2){
+        setQuadValues(px1, py1, px2, py2);
+    }
+    
+    public void CreateCircle(double px, double py, double r){
+        setCircleValues(px, py, r);
+    }
+    
+    public void CreateElypse(double px, double py, double rx, double ry){
+        setElypseValues(px, py, rx, ry);
+    }
+    
+    public void CreateLine(ArrayList values){
+        setLineValues(values);
+    }
+    
+    public void CreatePolygon(ArrayList values){
+        setPolygonValues(values);
+    }
+    
+    public void CreateText(String text, double px, double py){
+        setTextValues(text, px, py);
+    }
+    
 
     /** Returns the type of data */
     public Type getType() { return type; }
@@ -72,6 +147,14 @@ public class Data {
 
     /** Indicates whether the data is void */
     public boolean isVoid() { return type == Type.VOID; }
+    
+    /** New Types*/
+    public boolean isQuad() { return type == Type.QUAD; }
+    public boolean isCircle() { return type == Type.CIRCLE; }
+    public boolean isElypse() { return type == Type.ELYPSE; }
+    public boolean isLine() { return type == Type.LINE; }
+    public boolean isPolygon() { return type == Type.POLYGON; }
+    public boolean isText() { return type == Type.TEXT; }
 
     /**
      * Gets the value of an integer data. The method asserts that
@@ -99,6 +182,26 @@ public class Data {
 
     /** Copies the value from another data */
     public void setData(Data d) { type = d.type; value = d.value; }
+    
+    /** seters of the new types*/
+    public void setQuad(double px1, double py1, double px2, double py2){
+        setQuadValues(px1, py1, px2, py2);
+    }
+    public void setCircle(double px, double py, double r){
+        setCircleValues(px, py, r);
+    }
+    public void setElypse(double px, double py, double rx, double ry){
+        setElypseValues(px, py, rx, ry);
+    }
+    public void setLine(ArrayList values){
+        setLineValues(values);
+    }
+    public void setPolygon(ArrayList values){
+        setPolygonValues(values);
+    }
+    public void setText(String text, double px, double py){
+        setTextValues(text, px, py);
+    }
     
     /** Returns a string representing the data in textual form. */
     public String toString() {

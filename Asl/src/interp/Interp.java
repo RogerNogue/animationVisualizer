@@ -302,7 +302,7 @@ public class Interp {
             /** our new cases*/
             //object creation
             case AslLexer.CREATE:
-                switch (t.getChild(1).getType())) {
+                switch (t.getChild(1).getType()) {
                     case AslLexer.QUAD:
                         
                         return null;
@@ -322,32 +322,33 @@ public class Interp {
                     
                         return null;
                     default: assert false; // Should never happen
+                }
                 return null;
             //object delete
-            case ASlLexer.DESTRUCTION:
+            case AslLexer.DESTRUCTION:
             
                 return null;
             //object modification
-            case ASlLexer.MOVE:
+            case AslLexer.MOVE:
             
                 return null;
-            case ASlLexer.MODIFYCOLOR:
+            case AslLexer.MODIFYCOLOR:
             
                 return null;
-            case ASlLexer.MODIFYSTROKE:
+            case AslLexer.MODIFYSTROKE:
             
                 return null;
-            case ASlLexer.MODIFYSIZE:
+            case AslLexer.MODIFYSIZE:
             
                 return null;
-            case ASlLexer.MODIFYRADIOUS:
+            case AslLexer.MODIFYRADIOUS:
             
                 return null;
-            case ASlLexer.MODIFYVISIBILITY:
+            case AslLexer.MODIFYVISIBILITY:
             
                 return null;
             //script
-            case ASlLexer.SOURCE:
+            case AslLexer.SOURCE:
             
                 return null;
 

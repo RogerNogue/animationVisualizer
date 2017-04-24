@@ -78,7 +78,7 @@ public class Data {
         return value == 1;
     }
 
-    public Quad getQuad()}{
+    public Quad getQuad(){
         assert type == Type.QUAD;
         return quad;
     }

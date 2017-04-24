@@ -62,7 +62,7 @@ public class Interp {
 
     /** Nested levels of function calls. */
     private int function_nesting = -1;
-    
+
     /**
      * Constructor of the interpreter. It prepares the main
      * data structures for the execution of the main program.
@@ -99,7 +99,7 @@ public class Interp {
     public String getStackTrace(int nitems) {
         return Stack.getStackTrace(lineNumber(), nitems);
     }
-    
+
     /**
      * Gathers information from the AST and creates the map from
      * function names to the corresponding AST nodes.
@@ -116,7 +116,7 @@ public class Interp {
                 throw new RuntimeException("Multiple definitions of function " + fname);
             }
             FuncName2Tree.put(fname, f);
-        } 
+        }
     }
 
     /**
@@ -148,7 +148,7 @@ public class Interp {
 
     /** Defines the current line number with a specific value */
     private void setLineNumber(int l) { linenumber = l;}
-    
+
     /**
      * Executes a function.
      * @param funcname The name of the function.
@@ -167,7 +167,7 @@ public class Interp {
 
         // Dumps trace information (function call and arguments)
         if (trace != null) traceFunctionCall(f, Arg_values);
-        
+
         // List of parameters of the callee
         AslTree p = f.getChild(1);
         int nparam = p.getChildCount(); // Number of parameters
@@ -177,7 +177,7 @@ public class Interp {
 
         // Track line number
         setLineNumber(f);
-         
+
         // Copy the parameters to the current activation record
         for (int i = 0; i < nparam; ++i) {
             String param_name = p.getChild(i).getText();
@@ -189,10 +189,10 @@ public class Interp {
 
         // If the result is null, then the function returns void
         if (result == null) result = new Data();
-        
+
         // Dumps trace information
         if (trace != null) traceReturn(f, result, Arg_values);
-        
+
         // Destroy the activation record
         Stack.popActivationRecord();
 
@@ -217,9 +217,9 @@ public class Interp {
         }
         return null;
     }
-    
+
     /**
-     * Executes an instruction. 
+     * Executes an instruction.
      * Non-null results are only returned by "return" statements.
      * @param t The AST of the instruction.
      * @return The data returned by the instruction. The data will be
@@ -228,7 +228,7 @@ public class Interp {
      */
     private Data executeInstruction (AslTree t) {
         assert t != null;
-        
+
         setLineNumber(t);
         Data value; // The returned value
 
@@ -274,7 +274,7 @@ public class Interp {
                 Data val = new Data(0);;
                 try {
                     token = stdin.next();
-                    val.setValue(Integer.parseInt(token)); 
+                    val.setValue(Integer.parseInt(token));
                 } catch (NumberFormatException ex) {
                     throw new RuntimeException ("Format error when reading a number: " + token);
                 }
@@ -298,58 +298,58 @@ public class Interp {
             case AslLexer.FUNCALL:
                 executeFunction(t.getChild(0).getText(), t.getChild(1));
                 return null;
-                
+
             /** our new cases*/
             //object creation
             case AslLexer.CREATE:
                 switch (t.getChild(1).getType()) {
                     case AslLexer.QUAD:
-                        
+
                         return null;
                     case AslLexer.CIRCLE:
-                    
+
                         return null;
                     case AslLexer.ELYPSE:
 
                         return null;
                     case AslLexer.LINE:
-                    
+
                         return null;
                     case AslLexer.POLYGON:
-                    
+
                         return null;
                     case AslLexer.TEXT:
-                    
+
                         return null;
                     default: assert false; // Should never happen
                 }
                 return null;
             //object delete
             case AslLexer.DESTRUCTION:
-            
+
                 return null;
             //object modification
             case AslLexer.MOVE:
-            
+
                 return null;
             case AslLexer.MODIFYCOLOR:
-            
+
                 return null;
             case AslLexer.MODIFYSTROKE:
-            
+
                 return null;
             case AslLexer.MODIFYSIZE:
-            
+
                 return null;
             case AslLexer.MODIFYRADIOUS:
-            
+
                 return null;
             case AslLexer.MODIFYVISIBILITY:
-            
+
                 return null;
             //script
             case AslLexer.SOURCE:
-            
+
                 return null;
 
             default: assert false; // Should never happen
@@ -365,7 +365,7 @@ public class Interp {
      * @param t The AST of the expression
      * @return The value of the expression.
      */
-     
+
     private Data evaluateExpression(AslTree t) {
         assert t != null;
 
@@ -404,7 +404,7 @@ public class Interp {
             setLineNumber(previous_line);
             return value;
         }
-        
+
         // Unary operators
         value = evaluateExpression(t.getChild(0));
         if (t.getChildCount() == 1) {
@@ -465,11 +465,11 @@ public class Interp {
 
             default: assert false; // Should never happen
         }
-        
+
         setLineNumber(previous_line);
         return value;
     }
-    
+
     /**
      * Evaluation of Boolean expressions. This function implements
      * a short-circuit evaluation. The second operand is still a tree
@@ -488,12 +488,12 @@ public class Interp {
                 // Short circuit if v is false
                 if (!v.getBooleanValue()) return v;
                 break;
-        
+
             case AslLexer.OR:
                 // Short circuit if v is true
                 if (v.getBooleanValue()) return v;
                 break;
-                
+
             default: assert false;
         }
 
@@ -509,7 +509,7 @@ public class Interp {
             throw new RuntimeException ("Expecting Boolean expression");
         }
     }
-    
+
     /** Checks that the data is integer and raises an exception if it is not. */
     private void checkInteger (Data b) {
         if (!b.isInteger()) {
@@ -526,11 +526,11 @@ public class Interp {
      * @param args The AST of the list of arguments passed by the caller.
      * @return The list of evaluated arguments.
      */
-     
+
     private ArrayList<Data> listArguments (AslTree AstF, AslTree args) {
         if (args != null) setLineNumber(args);
         AslTree pars = AstF.getChild(1);   // Parameters of the function
-        
+
         // Create the list of parameters
         ArrayList<Data> Params = new ArrayList<Data> ();
         int n = pars.getChildCount();
@@ -576,7 +576,7 @@ public class Interp {
         function_nesting++;
         AslTree params = f.getChild(1);
         int nargs = params.getChildCount();
-        
+
         for (int i=0; i < function_nesting; ++i) trace.print("|   ");
 
         // Print function name and parameters
@@ -588,7 +588,7 @@ public class Interp {
             trace.print(p.getText() + "=" + arg_values.get(i));
         }
         trace.print(") ");
-        
+
         if (function_nesting == 0) trace.println("<entry point>");
         else trace.println("<line " + lineNumber() + ">");
     }
@@ -607,7 +607,7 @@ public class Interp {
         function_nesting--;
         trace.print("return");
         if (!result.isVoid()) trace.print(" " + result);
-        
+
         // Print the value of arguments passed by reference
         AslTree params = f.getChild(1);
         int nargs = params.getChildCount();
@@ -616,7 +616,7 @@ public class Interp {
             if (p.getType() == AslLexer.PVALUE) continue;
             trace.print(", &" + p.getText() + "=" + arg_values.get(i));
         }
-        
+
         trace.println(" <line " + lineNumber() + ">");
         if (function_nesting < 0) trace.close();
     }

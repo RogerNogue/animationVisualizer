@@ -1,30 +1,3 @@
-/**
- * Copyright (c) 2011, Jordi Cortadella
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *    * Redistributions of source code must retain the above copyright
- *      notice, this list of conditions and the following disclaimer.
- *    * Redistributions in binary form must reproduce the above copyright
- *      notice, this list of conditions and the following disclaimer in the
- *      documentation and/or other materials provided with the distribution.
- *    * Neither the name of the <organization> nor the
- *      names of its contributors may be used to endorse or promote products
- *      derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
 package interp;
 
 /**
@@ -48,55 +21,15 @@ public class Data {
     private Type type;
 
     /** Value of the data */
-    private int value; 
-    
-    private double x1;
-    private double y1;
-    private double x2;
-    private double y2;
-    private double radx;
-    private double rady;
-    
-    private ArrayList vals = new ArrayList();
-    
-    private String tex;
-    
-    private void setQuadValues(double px1, double py1, double px2, double py2){
-        type = Type.QUAD;
-        x1 = px1;
-        y1 = py1;
-        x2 = px2;
-        y2 = py2;
-    }
-    private void setCircleValues(double px, double py, double r){
-        type = Type.CIRCLE;
-        x1 = px;
-        y1 = py;
-        radx = rady = r;
-    }
-    private void setElypseValues(double px, double py, double rx, double ry){
-        type = Type.ELYPSE;
-        x1 = px;
-        y1 = py;
-        radx = rx;
-        rady = ry;
-    }
-    private void setLineValues(ArrayList values){
-        type = Type.LINE;
-        vals = values;
-    }
-    private void setPolygonValues(ArrayList values){
-        type = Type.POLYGON;
-        vals = values;
-    }
-    private void setTextValues(String text, double px, double py){
-        type = Type.TEXT;
-        tex = text;
-        x1 = px;
-        y1 = py;
-    }
-    
-    
+    private int value;
+
+    private Quad quad;
+    private Circle circle;
+    private Elypse elypse;
+    private Line line;
+    private Polygon polygon;
+    private Text text;
+
     /** Constructor for integers */
     Data(int v) { type = Type.INTEGER; value = v; }
 
@@ -108,47 +41,26 @@ public class Data {
 
     /** Copy constructor */
     Data(Data d) { type = d.type; value = d.value; }
-    
-    /** Creation of animation types*/
-    
-    public void CreateQuad(double px1, double py1, double px2, double py2){
-        setQuadValues(px1, py1, px2, py2);
+
+
+
+    Data(ArrayList<double> vals, String s){
+        if(s == "polygon") {type = Type.Polygon; polygon = Polygon(vals);}
+        else if(s == "line") {type = Type.Line; line = Line(vals);}
     }
-    
-    public void CreateCircle(double px, double py, double r){
-        setCircleValues(px, py, r);
+    Data(double x, double y, double a, double b, string s){
+        if(s == "elypse") {type = Type.ELYPSE; elypse = Elypse(x, y, a, b);}
+        else if(s == "quad") {type = Type.QUAD; quad = Quad(x, y, a, b);}
     }
-    
-    public void CreateElypse(double px, double py, double rx, double ry){
-        setElypseValues(px, py, rx, ry);
-    }
-    
-    public void CreateLine(ArrayList values){
-        setLineValues(values);
-    }
-    
-    public void CreatePolygon(ArrayList values){
-        setPolygonValues(values);
-    }
-    
-    public void CreateText(String text, double px, double py){
-        setTextValues(text, px, py);
-    }
-    
+    Data(double px, double py, double r){ type = Type.CIRCLE; circle = Circle(px, py, r); }
+    Data(String text, double px, double py) { type = Type.TEXT; text = Text(text, px, py); }
 
     /** Returns the type of data */
     public Type getType() { return type; }
 
-    /** Indicates whether the data is Boolean */
     public boolean isBoolean() { return type == Type.BOOLEAN; }
-
-    /** Indicates whether the data is integer */
     public boolean isInteger() { return type == Type.INTEGER; }
-
-    /** Indicates whether the data is void */
     public boolean isVoid() { return type == Type.VOID; }
-    
-    /** New Types*/
     public boolean isQuad() { return type == Type.QUAD; }
     public boolean isCircle() { return type == Type.CIRCLE; }
     public boolean isElypse() { return type == Type.ELYPSE; }
@@ -156,22 +68,19 @@ public class Data {
     public boolean isPolygon() { return type == Type.POLYGON; }
     public boolean isText() { return type == Type.TEXT; }
 
-    /**
-     * Gets the value of an integer data. The method asserts that
-     * the data is an integer.
-     */
     public int getIntegerValue() {
         assert type == Type.INTEGER;
         return value;
     }
 
-    /**
-     * Gets the value of a Boolean data. The method asserts that
-     * the data is a Boolean.
-     */
     public boolean getBooleanValue() {
         assert type == Type.BOOLEAN;
         return value == 1;
+    }
+
+    public Quad getQuad()}{
+        assert type == Type.QUAD;
+        return quad;
     }
 
     /** Defines a Boolean value for the data */
@@ -182,33 +91,13 @@ public class Data {
 
     /** Copies the value from another data */
     public void setData(Data d) { type = d.type; value = d.value; }
-    
-    /** seters of the new types*/
-    public void setQuad(double px1, double py1, double px2, double py2){
-        setQuadValues(px1, py1, px2, py2);
-    }
-    public void setCircle(double px, double py, double r){
-        setCircleValues(px, py, r);
-    }
-    public void setElypse(double px, double py, double rx, double ry){
-        setElypseValues(px, py, rx, ry);
-    }
-    public void setLine(ArrayList values){
-        setLineValues(values);
-    }
-    public void setPolygon(ArrayList values){
-        setPolygonValues(values);
-    }
-    public void setText(String text, double px, double py){
-        setTextValues(text, px, py);
-    }
-    
+
     /** Returns a string representing the data in textual form. */
     public String toString() {
         if (type == Type.BOOLEAN) return value == 1 ? "true" : "false";
         return Integer.toString(value);
     }
-    
+
     /**
      * Checks for zero (for division). It raises an exception in case
      * the value is zero.
@@ -223,9 +112,9 @@ public class Data {
      * @param op Type of operator (token).
      * @param d Second operand.
      */
-     
+
     public void evaluateArithmetic (int op, Data d) {
-        assert type == Type.INTEGER && d.type == Type.INTEGER;
+        assert (type == Type.INTEGER || type == Type.DOUBLE) && d.type == Type.INTEGER;
         switch (op) {
             case AslLexer.PLUS: value += d.value; break;
             case AslLexer.MINUS: value -= d.value; break;
@@ -243,7 +132,8 @@ public class Data {
      * @return A Boolean data with the value of the expression.
      */
     public Data evaluateRelational (int op, Data d) {
-        assert type != Type.VOID && type == d.type;
+        assert (type == Type.INTEGER || type == Type.DOUBLE || type == Type.BOOLEAN)
+                && type == d.type;
         switch (op) {
             case AslLexer.EQUAL: return new Data(value == d.value);
             case AslLexer.NOT_EQUAL: return new Data(value != d.value);
@@ -251,7 +141,7 @@ public class Data {
             case AslLexer.LE: return new Data(value <= d.value);
             case AslLexer.GT: return new Data(value > d.value);
             case AslLexer.GE: return new Data(value >= d.value);
-            default: assert false; 
+            default: assert false;
         }
         return null;
     }

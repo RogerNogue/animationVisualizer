@@ -13,6 +13,7 @@ package interp;
 import parser.*;
 import java.util.ArrayList;
 
+
 public class Data {
     /** Types of data */
     public enum Type {VOID, BOOLEAN, INTEGER, DOUBLE, QUAD, CIRCLE, ELYPSE, LINE, POLYGON, TEXT;}
@@ -44,16 +45,16 @@ public class Data {
 
 
 
-    Data(ArrayList<double> vals, String s){
-        if(s == "polygon") {type = Type.Polygon; polygon = Polygon(vals);}
-        else if(s == "line") {type = Type.Line; line = Line(vals);}
+    Data(ArrayList<Double> vals, String s){
+        if(s == "polygon") {type = Type.POLYGON; polygon = new Polygon(vals);}
+        else if(s == "line") {type = Type.LINE; line = new Line(vals);}
     }
-    Data(double x, double y, double a, double b, string s){
-        if(s == "elypse") {type = Type.ELYPSE; elypse = Elypse(x, y, a, b);}
-        else if(s == "quad") {type = Type.QUAD; quad = Quad(x, y, a, b);}
+    Data(double x, double y, double a, double b, String s){
+        if(s == "elypse") {type = Type.ELYPSE; elypse = new Elypse(x, y, a, b);}
+        else if(s == "quad") {type = Type.QUAD; quad = new Quad(x, y, a, b);}
     }
-    Data(double px, double py, double r){ type = Type.CIRCLE; circle = Circle(px, py, r); }
-    Data(String text, double px, double py) { type = Type.TEXT; text = Text(text, px, py); }
+    Data(double px, double py, double r){ type = Type.CIRCLE; circle = new Circle(px, py, r); }
+    Data(String textstr, double px, double py) { type = Type.TEXT; text = new Text(textstr, px, py); }
 
     /** Returns the type of data */
     public Type getType() { return type; }

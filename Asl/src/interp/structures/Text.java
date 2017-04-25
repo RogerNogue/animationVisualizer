@@ -1,3 +1,9 @@
+package interp;
+
+import parser.*;
+import java.util.ArrayList;
+
+
 public class Text{
 
     private double x;

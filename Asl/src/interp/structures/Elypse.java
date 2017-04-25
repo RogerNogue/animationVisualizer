@@ -1,3 +1,9 @@
+package interp;
+
+import parser.*;
+import java.util.ArrayList;
+
+
 public class Elypse{
 
     private double x;

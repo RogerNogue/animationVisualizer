@@ -379,30 +379,30 @@ public class Interp {
                 return null;
             //object delete
             case AslLexer.DESTRUCTION:
-
+                Stack.deleteVariable(t.getChild(0).getChild(0).getText());
                 return null;
             //object modification
             case AslLexer.MOVE:
-
+                
                 return null;
             case AslLexer.MODIFYCOLOR:
-
+                
                 return null;
             case AslLexer.MODIFYSTROKE:
-
+                
                 return null;
             case AslLexer.MODIFYSIZE:
-
+                
                 return null;
             case AslLexer.MODIFYRADIOUS:
-
+                
                 return null;
             case AslLexer.MODIFYVISIBILITY:
-
+                
                 return null;
             //script
             case AslLexer.SOURCE:
-
+                
                 return null;
 
             default: assert false; // Should never happen

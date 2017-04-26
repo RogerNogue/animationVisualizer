@@ -160,5 +160,10 @@ public class Stack {
         }
         return trace.toString();
     } 
+    
+    public void deleteVariable(String name){
+        CurrentAR.remove(name);
+        
+    }
 }
     

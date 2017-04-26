@@ -25,4 +25,20 @@ public class Elypse{
     public void setValues(double px, double py, double rx, double ry){
         setElypseValues(px, py, rx, ry);
     }
+
+    public double getX(){
+        return x;
+    }
+
+    public double getY(){
+        return y;
+    }
+
+    public double getRadX(){
+        return radx;
+    }
+
+    public double getRadY(){
+        return rady;
+    }
 }

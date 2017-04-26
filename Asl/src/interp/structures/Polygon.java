@@ -19,4 +19,8 @@ public class Polygon{
     public void setValues(ArrayList<Double> values){
         setPolygonValues(values);
     }
+
+    public ArrayList<Double> getVals(){
+        return vals;
+    }
 }

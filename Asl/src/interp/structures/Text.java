@@ -23,4 +23,16 @@ public class Text{
     public void setValues(String text, double px, double py){
         setTextValues(text, px, py);
     }
+
+    public double getX(){
+        return x;
+    }
+
+    public double getY(){
+        return y;
+    }
+
+    public String getText(){
+        return tex;
+    }
 }

@@ -21,4 +21,16 @@ public class Circle{
     public void setValues(double px, double py, double r){
         setCircleValues(px, py, r);
     }
+
+    public double getX(){
+        return x;
+    }
+
+    public double getY(){
+        return y;
+    }
+
+    public double getRad(){
+        return rad;
+    }
 }

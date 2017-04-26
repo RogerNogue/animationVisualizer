@@ -19,4 +19,8 @@ public class Line{
     public void setValues(ArrayList<Double> values){
         setLineValues(values);
     }
+
+    public ArrayList<Double> getVals(){
+        return vals;
+    }
 }

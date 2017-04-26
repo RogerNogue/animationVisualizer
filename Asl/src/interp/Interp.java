@@ -302,24 +302,77 @@ public class Interp {
             /** our new cases*/
             //object creation
             case AslLexer.CREATE:
+            double par1, par2, par3, par4;
+            int i = 0;
+            String s;
                 switch (t.getChild(1).getType()) {
                     case AslLexer.QUAD:
-
+                    
+                        
+                        s = "quad";
+                        par1 = evaluateExpression(t.getChild(1).getChild(0)).getDoubleValue();
+                        par2 = evaluateExpression(t.getChild(1).getChild(1)).getDoubleValue();
+                        par3 = evaluateExpression(t.getChild(1).getChild(2)).getDoubleValue();
+                        par4 = evaluateExpression(t.getChild(1).getChild(3)).getDoubleValue();
+                        Data quadrat = new Data(par1, par2, par3, par4, s);
+                        Stack.defineVariable(t.getChild(0).getText(), quadrat);
+                        
                         return null;
                     case AslLexer.CIRCLE:
-
+                        
+                        par1 = evaluateExpression(t.getChild(1).getChild(0)).getDoubleValue();
+                        par2 = evaluateExpression(t.getChild(1).getChild(1)).getDoubleValue();
+                        par3 = evaluateExpression(t.getChild(1).getChild(2)).getDoubleValue();
+                        Data cercle = new Data(par1, par2, par3);
+                        Stack.defineVariable(t.getChild(0).getText(), cercle);
+                        
                         return null;
                     case AslLexer.ELYPSE:
-
+                        
+                        s = "elypse";
+                        par1 = evaluateExpression(t.getChild(1).getChild(0)).getDoubleValue();
+                        par2 = evaluateExpression(t.getChild(1).getChild(1)).getDoubleValue();
+                        par3 = evaluateExpression(t.getChild(1).getChild(2)).getDoubleValue();
+                        par4 = evaluateExpression(t.getChild(1).getChild(3)).getDoubleValue();
+                        Data elipsis = new Data(par1, par2, par3, par4, s);
+                        Stack.defineVariable(t.getChild(0).getText(), elipsis);
+                        
                         return null;
                     case AslLexer.LINE:
-
+                        
+                        ArrayList<Double> puntsline = new ArrayList<Double>();
+                        s = "line";
+                        i = 0;
+                        while(t.getChild(i) != null){
+                            puntsline.add(evaluateExpression(t.getChild(i)).getDoubleValue());
+                            ++i;
+                        }
+                        Data line = new Data(puntsline, s);
+                        Stack.defineVariable(t.getChild(0).getText(), line);
+                        
                         return null;
                     case AslLexer.POLYGON:
 
+                        ArrayList<Double> puntspoly = new ArrayList<Double>();
+                        s = "polygon";
+                        i = 0;
+                        while(t.getChild(i) != null){
+                            puntspoly.add(evaluateExpression(t.getChild(i)).getDoubleValue());
+                            ++i;
+                        }
+                        Data polygon = new Data(puntspoly, s);
+                        Stack.defineVariable(t.getChild(0).getText(), polygon);
+                    
                         return null;
                     case AslLexer.TEXT:
 
+                        String text1;
+                        text1 = (t.getChild(1).getChild(2).getText());
+                        par2 = evaluateExpression(t.getChild(1).getChild(0)).getDoubleValue();
+                        par3 = evaluateExpression(t.getChild(1).getChild(1)).getDoubleValue();
+                        Data text = new Data(text1, par2, par3);
+                        Stack.defineVariable(t.getChild(0).getText(), text);
+                    
                         return null;
                     default: assert false; // Should never happen
                 }
@@ -384,6 +437,10 @@ public class Interp {
             case AslLexer.INT:
                 value = new Data(t.getIntValue());
                 break;
+            // A double literal
+            case AslLexer.DOUBLE:
+                value = new Data((double)t.getIntValue());
+                break;    
             // A Boolean literal
             case AslLexer.BOOLEAN:
                 value = new Data(t.getBooleanValue());

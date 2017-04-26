@@ -22,7 +22,7 @@ public class Data {
     private Type type;
 
     /** Value of the data */
-    private int value;
+    private double value;
 
     private Quad quad;
     private Circle circle;
@@ -32,8 +32,11 @@ public class Data {
     private Text text;
 
     /** Constructor for integers */
-    Data(int v) { type = Type.INTEGER; value = v; }
+    Data(int v) { type = Type.INTEGER; value = (double)v; }
 
+    /** Constructor for doubles */
+    Data(double v) { type = Type.DOUBLE; value = v; }
+    
     /** Constructor for Booleans */
     Data(boolean b) { type = Type.BOOLEAN; value = b ? 1 : 0; }
 
@@ -61,6 +64,7 @@ public class Data {
 
     public boolean isBoolean() { return type == Type.BOOLEAN; }
     public boolean isInteger() { return type == Type.INTEGER; }
+    public boolean isDouble() { return type == Type.DOUBLE; }
     public boolean isVoid() { return type == Type.VOID; }
     public boolean isQuad() { return type == Type.QUAD; }
     public boolean isCircle() { return type == Type.CIRCLE; }
@@ -71,6 +75,11 @@ public class Data {
 
     public int getIntegerValue() {
         assert type == Type.INTEGER;
+        return (int)value;
+    }
+    
+    public double getDoubleValue(){
+        assert type == Type.DOUBLE;
         return value;
     }
 
@@ -88,7 +97,10 @@ public class Data {
     public void setValue(boolean b) { type = Type.BOOLEAN; value = b ? 1 : 0; }
 
     /** Defines an integer value for the data */
-    public void setValue(int v) { type = Type.INTEGER; value = v; }
+    public void setValue(int v) { type = Type.INTEGER; value = (double)v; }
+    
+    /** Defines a double value for the data */
+    public void setValue(double v) { type = Type.DOUBLE; value = v; }
 
     /** Copies the value from another data */
     public void setData(Data d) { type = d.type; value = d.value; }
@@ -96,7 +108,7 @@ public class Data {
     /** Returns a string representing the data in textual form. */
     public String toString() {
         if (type == Type.BOOLEAN) return value == 1 ? "true" : "false";
-        return Integer.toString(value);
+        return Double.toString(value);
     }
 
     /**

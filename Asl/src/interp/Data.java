@@ -36,7 +36,7 @@ public class Data {
 
     /** Constructor for doubles */
     Data(double v) { type = Type.DOUBLE; value = v; }
-    
+
     /** Constructor for Booleans */
     Data(boolean b) { type = Type.BOOLEAN; value = b ? 1 : 0; }
 
@@ -77,7 +77,7 @@ public class Data {
         assert type == Type.INTEGER;
         return (int)value;
     }
-    
+
     public double getDoubleValue(){
         assert type == Type.DOUBLE;
         return value;
@@ -98,7 +98,7 @@ public class Data {
 
     /** Defines an integer value for the data */
     public void setValue(int v) { type = Type.INTEGER; value = (double)v; }
-    
+
     /** Defines a double value for the data */
     public void setValue(double v) { type = Type.DOUBLE; value = v; }
 

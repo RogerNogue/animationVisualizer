@@ -52,7 +52,8 @@ INTERP_SRC =	$(INTERP)/Interp.java \
 				$(INTERP)/structures/Text.java \
 				$(INTERP)/structures/Elypse.java \
 				$(INTERP)/structures/Polygon.java \
-				$(INTERP)/AslTreeAdaptor.java
+				$(INTERP)/structures/Structure.java \
+				$(INTERP)/AslTreeAdaptor.java 
 
 ALL_SRC =		$(MAIN_SRC) $(PARSER_SRC) $(INTERP_SRC)
 

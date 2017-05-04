@@ -4,7 +4,7 @@ import parser.*;
 import java.util.ArrayList;
 
 
-public class Text{
+public class Text extends Structure{
 
     private double x;
     private double y;
@@ -17,6 +17,7 @@ public class Text{
     }
 
     public Text(String text, double px, double py){
+        super();
         setTextValues(text, px, py);
     }
 

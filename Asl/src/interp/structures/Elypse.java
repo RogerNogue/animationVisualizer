@@ -4,7 +4,7 @@ import parser.*;
 import java.util.ArrayList;
 
 
-public class Elypse{
+public class Elypse extends Structure{
 
     private double x;
     private double y;
@@ -19,6 +19,7 @@ public class Elypse{
     }
 
     public Elypse(double px, double py, double rx, double ry){
+        super();
         setElypseValues(px, py, rx, ry);
     }
 

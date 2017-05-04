@@ -12,7 +12,12 @@ public class Structure{
     public ArrayList<Double> move_x;
     public ArrayList<Double> move_y;
 
-    public Structure(){}
+    public Structure(){
+        stroke = 1;
+        red = 0;
+        green = 0;
+        blue = 255;
+    }
 
     public void set_stroke(double s){
         stroke = s;
@@ -50,4 +55,24 @@ public class Structure{
     public ArrayList<Double> get_move_y(){
         return move_y;
     }
+
+    public ArrayList<Double> getVals(){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+
+    public double getX(){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+    public double getY(){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+    public double getX1(){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+    public double getY1(){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+    public double getX2(){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+    public double getY2(){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+
+    public String getText(){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+
+    public double getRadX(){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+    public double getRadY(){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+    public double getRad(){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+
+    public void setValues(ArrayList<Double> values){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+    public void setValues(double px, double py, double rx, double ry){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+    public void setValues(double px, double py, double r){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+    public void setValues(String text, double px, double py){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
 }

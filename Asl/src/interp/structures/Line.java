@@ -4,7 +4,7 @@ import parser.*;
 import java.util.ArrayList;
 
 
-public class Line{
+public class Line extends Structure{
 
     private ArrayList<Double> vals = new ArrayList<Double>();
 
@@ -13,6 +13,7 @@ public class Line{
     }
 
     public Line(ArrayList<Double> values){
+        super();
         setLineValues(values);
     }
 

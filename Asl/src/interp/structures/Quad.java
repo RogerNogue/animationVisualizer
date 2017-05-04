@@ -4,7 +4,7 @@ import parser.*;
 import java.util.ArrayList;
 
 
-public class Quad{
+public class Quad extends Structure{
 
     private double x1;
     private double y1;
@@ -19,6 +19,7 @@ public class Quad{
     }
 
     public Quad(double px1, double py1, double px2, double py2){
+        super();
         setQuadValues(px1, py1, px2, py2);
     }
 

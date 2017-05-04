@@ -24,12 +24,13 @@ public class Data {
     /** Value of the data */
     private double value;
 
-    private Quad quad;
-    private Circle circle;
-    private Elypse elypse;
-    private Line line;
-    private Polygon polygon;
-    private Text text;
+    //private Quad quad;
+    //private Circle circle;
+    //private Elypse elypse;
+    //private Line line;
+    //private Polygon polygon;
+ //   private Text text;
+    private Structure figure;
 
     /** Constructor for integers */
     Data(int v) { type = Type.INTEGER; value = (double)v; }
@@ -46,18 +47,16 @@ public class Data {
     /** Copy constructor */
     Data(Data d) { type = d.type; value = d.value; }
 
-
-
     Data(ArrayList<Double> vals, String s){
-        if(s == "polygon") {type = Type.POLYGON; polygon = new Polygon(vals);}
-        else if(s == "line") {type = Type.LINE; line = new Line(vals);}
+        if(s == "polygon") {type = Type.POLYGON; figure = new Polygon(vals);}
+        else if(s == "line") {type = Type.LINE; figure = new Line(vals);}
     }
     Data(double x, double y, double a, double b, String s){
-        if(s == "elypse") {type = Type.ELYPSE; elypse = new Elypse(x, y, a, b);}
-        else if(s == "quad") {type = Type.QUAD; quad = new Quad(x, y, a, b);}
+        if(s == "elypse") {type = Type.ELYPSE; figure = new Elypse(x, y, a, b);}
+        else if(s == "quad") {type = Type.QUAD; figure = new Quad(x, y, a, b);}
     }
-    Data(double px, double py, double r){ type = Type.CIRCLE; circle = new Circle(px, py, r); }
-    Data(String textstr, double px, double py) { type = Type.TEXT; text = new Text(textstr, px, py); }
+    Data(double px, double py, double r){ type = Type.CIRCLE; figure = new Circle(px, py, r); }
+    Data(String textstr, double px, double py) { type = Type.TEXT; figure = new Text(textstr, px, py); }
 
     /** Returns the type of data */
     public Type getType() { return type; }
@@ -88,9 +87,8 @@ public class Data {
         return value == 1;
     }
 
-    public Quad getQuad(){
-        assert type == Type.QUAD;
-        return quad;
+    public Structure getStructure(){
+        return figure;
     }
 
     /** Defines a Boolean value for the data */

@@ -2,7 +2,8 @@ package interp;
 
 import parser.*;
 import java.util.ArrayList;
-public class Circle{
+
+public class Circle extends Structure{
 
     private double x;
     private double y;
@@ -15,6 +16,7 @@ public class Circle{
     }
 
     public Circle(double px, double py, double r){
+        super();
         setCircleValues(px, py, r);
     }
 

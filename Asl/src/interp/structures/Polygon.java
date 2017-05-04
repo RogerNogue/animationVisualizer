@@ -4,7 +4,7 @@ import parser.*;
 import java.util.ArrayList;
 
 
-public class Polygon{
+public class Polygon extends Structure{
 
     private ArrayList<Double> vals = new ArrayList<Double>();
 
@@ -13,6 +13,7 @@ public class Polygon{
     }
 
     public Polygon(ArrayList<Double> values){
+        super();
         setPolygonValues(values);
     }
 

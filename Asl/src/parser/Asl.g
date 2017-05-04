@@ -168,10 +168,10 @@ modifycolor     :   (MODIFYCOLOR '('  ID ','  A1=atom ','  A2=atom ','  A3=atom'
 // width i RGB
 modifystroke    :   (MODIFYSTROKE '(' ID ','  A1=atom ','  A2=atom ','  A3=atom ','  A4=atom')') -> ^(MODIFYSTROKE ID ^(PARAMS $A1 $A2 $A3 $A4))
         ;
-
+//mida per al quadrat i elipsis
 modifysize      :   (MODIFYSIZE '(' ID ','  A1=atom ','  A2=atom')') -> ^(MODIFYSIZE ID ^(PARAMS $A1 $A2))
         ;
-
+//mida cercle
 modifyradious   :   MODIFYRADIOUS '(' ID ','  A1=atom')' -> ^(MODIFYRADIOUS ID ^(PARAMS $A1))
         ;
 

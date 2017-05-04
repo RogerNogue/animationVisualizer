@@ -392,9 +392,11 @@ public class Interp {
                 
                 return null;
             case AslLexer.MODIFYSIZE:
+                //quad and elypse
                 
                 return null;
             case AslLexer.MODIFYRADIOUS:
+                //circle
                 
                 return null;
             case AslLexer.MODIFYVISIBILITY:

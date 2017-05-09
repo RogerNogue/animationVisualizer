@@ -1,10 +1,12 @@
 package interp;
 
 import parser.*;
+
 import java.util.ArrayList;
 
 
 public class Structure{
+
     public double stroke;
     public int red;
     public int green;
@@ -13,6 +15,7 @@ public class Structure{
     public ArrayList<Double> move_y;
 
     public Structure(){
+    
         stroke = 1;
         red = 0;
         green = 0;

@@ -97,11 +97,14 @@ instruction
         |   creation
         |   destruction
         |   movement
+        |   modify
+        /*
         |   modifycolor
         |   modifystroke
         |   modifysize         //for quads and elypses
         |   modifyradious
         |   modifyVisibility
+        */
         |   source
         |                   // Nothing
         ;
@@ -162,6 +165,47 @@ destruction     : DESTRUCTION^ '('! ID')'!
 movement        :   (MOVE '(' ID ',' A1=atom ',' A2=atom')') -> ^(MOVE ID ^(PARAMS $A1 $A2))
         ;
 
+modify          :   ^MODIFY (color | stroke | size | visibility)
+        ;
+        
+//Color (ID, red, green, blue)        
+color           : COLOR  '(' ID ',' A1=atom ',' A2=atom ',' A3=atom ')'
+    ;
+
+//Stroke (ID, width, red, green, blue)
+stroke          : STROKE '(' ID ',' A1=atom ',' A2=atom ',' A3=atom ',' A4=atom')'
+    ;
+
+//modificacions de mida:
+size            : (vertex, radious, tworadious, width, height)       
+
+//Radious (ID, R) //es defineix el nou radi
+radious         :   RADIOUS '(' ID ',' A1=atom')'
+        ;
+        
+//TwoRadious (ID, R1, R2) //es defineixen els 2 nous radis
+tworadious      :   TWORADIOUS '(' ID ',' A1=atom ',' A2=atom ')'
+        ;
+        
+//VertexPosition (ID, n(numero del vertex), x, y)
+vertex          :   VERTEXPOSITION '(' ID ',' A1=atom ',' A2=atom ',' A3=atom ')'
+        ;
+        
+//Width (ID, n(nova mida amplada))
+width           :   WIDTH '(' ID ',' A1=atom ')'
+        ;
+
+//height (ID, n(nova mida alcada))
+height          :   HEIGHT '(' ID ',' A1=atom ')'
+        ;
+
+
+//Visibility (ID, opacity)) //0<= opacity <= 1
+Visibility      : VISIBILITY '(' ID ',' A1=atom ')'
+        ;
+
+        
+/*
 modifycolor     :   (MODIFYCOLOR '('  ID ','  A1=atom ','  A2=atom ','  A3=atom')') -> ^(MODIFYCOLOR ID ^(PARAMS $A1 $A2 $A3))
         ;
 
@@ -177,6 +221,8 @@ modifyradious   :   MODIFYRADIOUS '(' ID ','  A1=atom')' -> ^(MODIFYRADIOUS ID ^
 
 modifyVisibility    :   MODIFYVISIBILITY '(' ID ','  A1=atom')' -> ^(MODIFYVISIBILITY ID ^(PARAMS $A1))
         ;
+        
+*/        
 
 source          :  SOURCE^ STRING  '('!  atom (','! atom )* ')'! 
         ;
@@ -249,11 +295,24 @@ WRITE	: 'write' ;
 CREATE	            : 'Create' ;
 DESTRUCTION         : 'Destruction';
 MOVE                : 'Move';
+MODIFY              : 'Modify';
+RADIOUS             : 'Radious';
+COLOR               : 'Color';
+STROKECOLOR         : 'StrokeColor';
+SIZE                : 'Size';
+VISIBILITY          : 'Visibility';
+VERTEXPOSITION      : 'VertexPosition';
+RADIOUS             : 'Radious';
+TWORADIOUS          : 'TwoRadious';
+HEIGHT              : 'Height';
+WIDTH               : 'Width';
+/*
 MODIFYCOLOR         : 'ModifyColor';
 MODIFYSTROKE        : 'ModifyStroke';
 MODIFYSIZE          : 'ModifySize';
 MODIFYRADIOUS       : 'ModifyRadious';
 MODIFYVISIBILITY    : 'ModifyVisibility';
+*/
 SOURCE              : 'Source';
 
 

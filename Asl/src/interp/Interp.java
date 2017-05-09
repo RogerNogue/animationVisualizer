@@ -376,16 +376,28 @@ public class Interp {
                 return null;
             //object modification
             case AslLexer.MOVE:
-
+                Data aux = Stack.getVariable(t.getChild(0).getText());
+                Structure saux = aux.getStructure();
+                saux.add_movement(evaluateExpression(t.getChild(1).getChild(0)).getDoubleValue(), evaluateExpression(t.getChild(1).getChild(1)).getDoubleValue());
                 return null;
             case AslLexer.MODIFYCOLOR:
-
+                aux = Stack.getVariable(t.getChild(0).getText());
+                saux = aux.getStructure();
+                saux.set_fill_RGB(   evaluateExpression(t.getChild(1).getChild(0)).getIntegerValue(),
+                                evaluateExpression(t.getChild(1).getChild(1)).getIntegerValue(),
+                                evaluateExpression(t.getChild(1).getChild(2)).getIntegerValue());
                 return null;
             case AslLexer.MODIFYSTROKE:
-
+                aux = Stack.getVariable(t.getChild(0).getText());
+                saux = aux.getStructure();
+                saux.set_stroke(evaluateExpression(t.getChild(1).getChild(0)).getDoubleValue());
+                saux.set_stroke_RGB(    evaluateExpression(t.getChild(1).getChild(1)).getIntegerValue(),
+                                        evaluateExpression(t.getChild(1).getChild(2)).getIntegerValue(),
+                                        evaluateExpression(t.getChild(1).getChild(3)).getIntegerValue());
                 return null;
             case AslLexer.MODIFYSIZE:
                 //quad and elypse
+                
 
                 return null;
             case AslLexer.MODIFYRADIOUS:

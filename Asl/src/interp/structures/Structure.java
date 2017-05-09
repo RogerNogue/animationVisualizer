@@ -8,26 +8,38 @@ import java.util.ArrayList;
 public class Structure{
 
     public double stroke;
-    public int red;
-    public int green;
-    public int blue;
+    public RGB strokeColor;
+    public RGB fillColor;
     public ArrayList<Double> move_x;
     public ArrayList<Double> move_y;
 
     public Structure(){
     
         stroke = 1;
-        red = 0;
-        green = 0;
-        blue = 255;
+        fillColor = new RGB(0, 0, 255);
+        strokeColor = new RGB(0, 0, 50);
+        move_x = new ArrayList<Double>();
+        move_y = new ArrayList<Double>();
     }
 
     public void set_stroke(double s){
         stroke = s;
     }
 
-    public void set_rgb(int r, int g, int b){
-        red = r; green = g; blue = b;
+    public void set_fill_RGB(int r, int g, int b){
+        fillColor.set_RGB(r, g, b);
+    }
+    
+    public void set_stroke_RGB(int r, int g, int b){
+        strokeColor.set_RGB(r, g, b);
+    }
+    
+    public RGB get_fill_RGB(){
+        return fillColor;
+    }
+    
+    public RGB get_stroke_RGB(){
+        return strokeColor;
     }
 
     public void add_movement(double x, double y){
@@ -39,16 +51,28 @@ public class Structure{
         return stroke;
     }
 
-    public int get_red(){
-        return red;
+    public int get_fill_red(){
+        return fillColor.get_red();
     }
 
-    public int get_green(){
-        return green;
+    public int get_fill_green(){
+        return fillColor.get_green();
     }
 
-    public int get_blue(){
-        return blue;
+    public int get_fill_blue(){
+        return fillColor.get_blue();
+    }
+    
+    public int get_stroke_red(){
+        return strokeColor.get_red();
+    }
+
+    public int get_stroke_green(){
+        return strokeColor.get_green();
+    }
+
+    public int get_stroke_blue(){
+        return strokeColor.get_blue();
     }
 
     public ArrayList<Double> get_move_x(){

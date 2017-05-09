@@ -88,6 +88,9 @@ public class Data {
     }
 
     public Structure getStructure(){
+        assert type != Type.INTEGER;
+        assert type != Type.DOUBLE;
+        assert type != Type.BOOLEAN;
         return figure;
     }
 

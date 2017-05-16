@@ -165,7 +165,7 @@ destruction     : DESTRUCTION^ '('! ID')'!
 movement        :   (MOVE '(' ID ',' A1=atom ',' A2=atom')') -> ^(MOVE ID ^(PARAMS $A1 $A2))
         ;
 
-modify          :   ^MODIFY (color | stroke | size | visibility)
+modify          :   MODIFY^ (color | stroke | size | visibility)
         ;
         
 //Color (ID, red, green, blue)        
@@ -175,9 +175,10 @@ color           : COLOR  '(' ID ',' A1=atom ',' A2=atom ',' A3=atom ')'
 //Stroke (ID, width, red, green, blue)
 stroke          : STROKE '(' ID ',' A1=atom ',' A2=atom ',' A3=atom ',' A4=atom')'
     ;
-
+    
 //modificacions de mida:
-size            : (vertex, radious, tworadious, width, height)       
+size            : (vertex | radious | tworadious | width | height)       
+        ;
 
 //Radious (ID, R) //es defineix el nou radi
 radious         :   RADIOUS '(' ID ',' A1=atom')'
@@ -201,11 +202,11 @@ height          :   HEIGHT '(' ID ',' A1=atom ')'
 
 
 //Visibility (ID, opacity)) //0<= opacity <= 1
-Visibility      : VISIBILITY '(' ID ',' A1=atom ')'
+visibility      : VISIBILITY '(' ID ',' A1=atom ')'
         ;
 
         
-/*
+/*codi old
 modifycolor     :   (MODIFYCOLOR '('  ID ','  A1=atom ','  A2=atom ','  A3=atom')') -> ^(MODIFYCOLOR ID ^(PARAMS $A1 $A2 $A3))
         ;
 
@@ -302,10 +303,11 @@ STROKECOLOR         : 'StrokeColor';
 SIZE                : 'Size';
 VISIBILITY          : 'Visibility';
 VERTEXPOSITION      : 'VertexPosition';
-RADIOUS             : 'Radious';
+RADIUS             : 'Radius';
 TWORADIOUS          : 'TwoRadious';
 HEIGHT              : 'Height';
 WIDTH               : 'Width';
+STROKE              : 'Stroke';
 /*
 MODIFYCOLOR         : 'ModifyColor';
 MODIFYSTROKE        : 'ModifyStroke';

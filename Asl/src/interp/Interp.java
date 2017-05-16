@@ -374,7 +374,42 @@ public class Interp {
             case AslLexer.DESTRUCTION:
                 Stack.deleteVariable(t.getChild(0).getChild(0).getText());
                 return null;
-            //object modification
+            case AslLexer.MODIFY:
+                switch (t.getChild(0).getType()) {
+                    case AslLexer.COLOR:
+                    
+                        return null;
+                    
+                    case AslLexer.STROKE:
+                    
+                        return null;
+                    case AslLexer.VISIBILITY:
+                    
+                        return null;
+                    case AslLexer.SIZE:
+                        switch (t.getChild(0).getType()) {
+                            case AslLexer.VERTEXPOSITION:
+                            
+                                return null;
+                            case AslLexer.RADIUS:
+                            
+                                return null;
+                            case AslLexer.TWORADIUS:
+                            
+                                return null;
+                            case AslLexer.WIDTH:
+                            
+                                return null;
+                            case AslLexer.HEIGHT:
+                            
+                                return null;
+                        }
+                        return null;
+                        
+                }
+                return null;
+                /**codi antic*/
+/*            //object modification
             case AslLexer.MOVE:
                 Data aux = Stack.getVariable(t.getChild(0).getText());
                 Structure saux = aux.getStructure();
@@ -407,6 +442,7 @@ public class Interp {
             case AslLexer.MODIFYVISIBILITY:
 
                 return null;
+*/
             //script
             case AslLexer.SOURCE:
 

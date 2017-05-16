@@ -169,40 +169,40 @@ modify          :   MODIFY^ (color | stroke | size | visibility)
         ;
         
 //Color (ID, red, green, blue)        
-color           : COLOR  '(' ID ',' A1=atom ',' A2=atom ',' A3=atom ')'
+color           : COLOR^  '('! ID ','! A1=atom ','! A2=atom ','! A3=atom ')'!
     ;
 
 //Stroke (ID, width, red, green, blue)
-stroke          : STROKE '(' ID ',' A1=atom ',' A2=atom ',' A3=atom ',' A4=atom')'
+stroke          : STROKE^ '('! ID ','! A1=atom ','! A2=atom ','! A3=atom ','! A4=atom')'!
     ;
     
 //modificacions de mida:
-size            : (vertex | radious | tworadious | width | height)       
+size            : SIZE^ (vertex | radius | tworadius | width | height)       
         ;
 
-//Radious (ID, R) //es defineix el nou radi
-radious         :   RADIOUS '(' ID ',' A1=atom')'
+//Radius (ID, R) //es defineix el nou radi
+radius         :   RADIUS^ '('! ID ','! A1=atom')'!
         ;
         
-//TwoRadious (ID, R1, R2) //es defineixen els 2 nous radis
-tworadious      :   TWORADIOUS '(' ID ',' A1=atom ',' A2=atom ')'
+//TwoRadius (ID, R1, R2) //es defineixen els 2 nous radis
+tworadius      :   TWORADIUS^ '('! ID ','! A1=atom ','! A2=atom ')'!
         ;
         
 //VertexPosition (ID, n(numero del vertex), x, y)
-vertex          :   VERTEXPOSITION '(' ID ',' A1=atom ',' A2=atom ',' A3=atom ')'
+vertex          :   VERTEXPOSITION^ '('! ID ','! A1=atom ','! A2=atom ','! A3=atom ')'!
         ;
         
 //Width (ID, n(nova mida amplada))
-width           :   WIDTH '(' ID ',' A1=atom ')'
+width           :   WIDTH^ '('! ID ','! A1=atom ')'!
         ;
 
 //height (ID, n(nova mida alcada))
-height          :   HEIGHT '(' ID ',' A1=atom ')'
+height          :   HEIGHT^ '('! ID ','! A1=atom ')'!
         ;
 
 
 //Visibility (ID, opacity)) //0<= opacity <= 1
-visibility      : VISIBILITY '(' ID ',' A1=atom ')'
+visibility      : VISIBILITY^ '('! ID ','! A1=atom ')'!
         ;
 
         
@@ -303,8 +303,8 @@ STROKECOLOR         : 'StrokeColor';
 SIZE                : 'Size';
 VISIBILITY          : 'Visibility';
 VERTEXPOSITION      : 'VertexPosition';
-RADIUS             : 'Radius';
-TWORADIOUS          : 'TwoRadious';
+RADIUS              : 'Radius';
+TWORADIUS           : 'TwoRadius';
 HEIGHT              : 'Height';
 WIDTH               : 'Width';
 STROKE              : 'Stroke';

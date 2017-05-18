@@ -172,8 +172,8 @@ modify          :   MODIFY^ (color | stroke | size | visibility)
 color           : COLOR^  '('! ID ','! A1=atom ','! A2=atom ','! A3=atom ')'!
     ;
 
-//Stroke (ID, width, red, green, blue)
-stroke          : STROKE^ '('! ID ','! A1=atom ','! A2=atom ','! A3=atom ','! A4=atom')'!
+//Stroke (ID, width, red, green, blue, alpha?)
+stroke          : STROKE^ '('! ID ','! A1=atom ','! A2=atom ','! A3=atom ','! A4=atom ( ','! A5=atom )? ')'!
     ;
     
 //modificacions de mida:

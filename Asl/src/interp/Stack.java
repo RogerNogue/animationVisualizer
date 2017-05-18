@@ -165,5 +165,9 @@ public class Stack {
         CurrentAR.remove(name);
         
     }
+    
+    public HashMap getStack(){
+        return CurrentAR;
+    }
 }
     

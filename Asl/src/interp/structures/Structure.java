@@ -12,9 +12,9 @@ public class Structure{
     public RGB fillColor;
     public ArrayList<Double> move_x;
     public ArrayList<Double> move_y;
+    
 
     public Structure(){
-    
         stroke = 1;
         fillColor = new RGB(0, 0, 255);
         strokeColor = new RGB(0, 0, 50);
@@ -32,6 +32,18 @@ public class Structure{
     
     public void set_stroke_RGB(int r, int g, int b){
         strokeColor.set_RGB(r, g, b);
+    }
+    
+    public void set_stroke_RGB(int r, int g, int b, double a){
+        strokeColor.set_RGB(r, g, b, a);
+    }
+    
+    public void set_opacity(double a){ 
+        fillColor.set_alpha(a);
+    }
+    
+    public void set_stroke_opacity(double a){ 
+        strokeColor.set_alpha(a);
     }
     
     public RGB get_fill_RGB(){
@@ -63,6 +75,10 @@ public class Structure{
         return fillColor.get_blue();
     }
     
+    public double get_opacity(){
+        return fillColor.get_alpha();
+    }
+    
     public int get_stroke_red(){
         return strokeColor.get_red();
     }
@@ -73,6 +89,10 @@ public class Structure{
 
     public int get_stroke_blue(){
         return strokeColor.get_blue();
+    }
+    
+    public double get_stroke_opacity(){
+        return strokeColor.get_alpha();
     }
 
     public ArrayList<Double> get_move_x(){

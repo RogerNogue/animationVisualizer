@@ -88,6 +88,7 @@ public class Interp {
     /** Runs the program by calling the main function without parameters. */
     public void Run() {
         executeFunction ("main", null);
+        SVGParser.translate(Stack);
     }
 
     /** Returns the contents of the stack trace */
@@ -377,14 +378,31 @@ public class Interp {
             case AslLexer.MODIFY:
                 switch (t.getChild(0).getType()) {
                     case AslLexer.COLOR:
-                    
-                        return null;
-                    
+                        Data aux = Stack.getVariable(t.getChild(0).getText());
+                        Structure saux = aux.getStructure();
+                        saux.set_fill_RGB(  evaluateExpression(t.getChild(1).getChild(0)).getIntegerValue(),
+                                            evaluateExpression(t.getChild(1).getChild(1)).getIntegerValue(),
+                                            evaluateExpression(t.getChild(1).getChild(2)).getIntegerValue());
+                        return null;                    
                     case AslLexer.STROKE:
-                    
-                        return null;
+                        aux = Stack.getVariable(t.getChild(0).getText());
+                        saux = aux.getStructure();
+                        saux.set_stroke(evaluateExpression(t.getChild(1).getChild(0)).getDoubleValue());
+                        if(t.getChild(1).getChild(4) == null)
+                            saux.set_stroke_RGB(    evaluateExpression(t.getChild(1).getChild(1)).getIntegerValue(),
+                                                    evaluateExpression(t.getChild(1).getChild(2)).getIntegerValue(),
+                                                    evaluateExpression(t.getChild(1).getChild(3)).getIntegerValue());
+                        else
+                            saux.set_stroke_RGB(    evaluateExpression(t.getChild(1).getChild(1)).getIntegerValue(),
+                                                    evaluateExpression(t.getChild(1).getChild(2)).getIntegerValue(),
+                                                    evaluateExpression(t.getChild(1).getChild(3)).getIntegerValue(),
+                                                    evaluateExpression(t.getChild(1).getChild(4)).getIntegerValue());
+                        
+                        return null;                        
                     case AslLexer.VISIBILITY:
-                    
+                        aux = Stack.getVariable(t.getChild(0).getText());
+                        saux = aux.getStructure();
+                        saux.set_opacity(evaluateExpression(t.getChild(0).getChild(1)).getDoubleValue());
                         return null;
                     case AslLexer.SIZE:
                         switch (t.getChild(0).getType()) {
@@ -392,16 +410,16 @@ public class Interp {
                             
                                 return null;
                             case AslLexer.RADIUS:
-                            
+                                
                                 return null;
                             case AslLexer.TWORADIUS:
-                            
+                                
                                 return null;
                             case AslLexer.WIDTH:
-                            
+                                
                                 return null;
                             case AslLexer.HEIGHT:
-                            
+                                
                                 return null;
                         }
                         return null;

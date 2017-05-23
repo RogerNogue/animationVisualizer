@@ -62,6 +62,9 @@ public class Interp {
 
     /** Nested levels of function calls. */
     private int function_nesting = -1;
+    
+    /** Stack of names of functions*/
+    private ArrayList<String> functionNames;
 
     /**
      * Constructor of the interpreter. It prepares the main
@@ -83,12 +86,13 @@ public class Interp {
             }
         }
         function_nesting = -1;
+        functionNames = new ArrayList<String>();
     }
 
     /** Runs the program by calling the main function without parameters. */
     public void Run() {
         executeFunction ("main", null);
-        SVGParser.translate(Stack);
+        SVGParser.translate();
     }
 
     /** Returns the contents of the stack trace */
@@ -157,6 +161,9 @@ public class Interp {
      * @return The data returned by the function.
      */
     private Data executeFunction (String funcname, AslTree args) {
+    
+        functionNames.add(funcname);
+        
         // Get the AST of the function
         AslTree f = FuncName2Tree.get(funcname);
         if (f == null) throw new RuntimeException(" function " + funcname + " not declared");
@@ -193,7 +200,9 @@ public class Interp {
 
         // Dumps trace information
         if (trace != null) traceReturn(f, result, Arg_values);
-
+        
+        functionNames.remove(functionNames.size() - 1);
+        
         // Destroy the activation record
         Stack.popActivationRecord();
 
@@ -315,6 +324,7 @@ public class Interp {
                         par4 = evaluateExpression(t.getChild(1).getChild(3)).getDoubleValue();
                         Data quadrat = new Data(par1, par2, par3, par4, s);
                         Stack.defineVariable(t.getChild(0).getText(), quadrat);
+                        SVGParser.store(quadrat, functionNames.get(functionNames.size() - 1) + t.getChild(0).getText());
 
                         return null;
                     case AslLexer.CIRCLE:
@@ -323,6 +333,7 @@ public class Interp {
                         par3 = evaluateExpression(t.getChild(1).getChild(2)).getDoubleValue();
                         Data cercle = new Data(par1, par2, par3);
                         Stack.defineVariable(t.getChild(0).getText(), cercle);
+                        SVGParser.store(cercle, functionNames.get(functionNames.size() - 1) + t.getChild(0).getText());
 
                         return null;
                     case AslLexer.ELYPSE:
@@ -333,6 +344,7 @@ public class Interp {
                         par4 = evaluateExpression(t.getChild(1).getChild(3)).getDoubleValue();
                         Data elipsis = new Data(par1, par2, par3, par4, s);
                         Stack.defineVariable(t.getChild(0).getText(), elipsis);
+                        SVGParser.store(elipsis, functionNames.get(functionNames.size() - 1) + t.getChild(0).getText());
 
                         return null;
                     case AslLexer.LINE:
@@ -345,6 +357,7 @@ public class Interp {
                         }
                         Data line = new Data(puntsline, s);
                         Stack.defineVariable(t.getChild(0).getText(), line);
+                        SVGParser.store(line, functionNames.get(functionNames.size() - 1) + t.getChild(0).getText());
 
                         return null;
                     case AslLexer.POLYGON:
@@ -357,6 +370,7 @@ public class Interp {
                         }
                         Data polygon = new Data(puntspoly, s);
                         Stack.defineVariable(t.getChild(0).getText(), polygon);
+                        SVGParser.store(polygon, functionNames.get(functionNames.size() - 1) + t.getChild(0).getText());
 
                         return null;
                     case AslLexer.TEXT:
@@ -366,7 +380,8 @@ public class Interp {
                         par3 = evaluateExpression(t.getChild(1).getChild(1)).getDoubleValue();
                         Data text = new Data(text1, par2, par3);
                         Stack.defineVariable(t.getChild(0).getText(), text);
-
+                        SVGParser.store(text, functionNames.get(functionNames.size() - 1) + t.getChild(0).getText());
+                        
                         return null;
                     default: assert false; // Should never happen
                 }

@@ -166,8 +166,9 @@ public class Stack {
         
     }
     
-    public HashMap getStack(){
-        return CurrentAR;
+    public LinkedList getStack(){
+        //return CurrentAR;
+        return Stack;
     }
 }
     

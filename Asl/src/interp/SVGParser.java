@@ -28,50 +28,60 @@ public final class SVGParser{
     }
 
     public static void translate(){
-    
-        
         try{
             FileWriter file = new FileWriter("Animation.html");
-            file.write("Hola ");
-            
-            System.out.print("Hello");
+            file.write("<!DOCTYPE html>" + "\n" + "<html>\n" + "<body>\n");
             for(int i = 0; i < objects.size(); ++i){
                 Structure str = objects.get(i).getStructure();
-                System.out.print(names.get(i));
+                System.out.print(names.get(i) + "\n");
                 if(objects.get(i).isQuad()){
-                    
                     file.write(     "<svg width=\"400\" height=\"180\">  "
-                                +   "<rect x=\"50\" y=\"20\" width=\"150\" height=\"150\"  "
-                                +   "style=\"fill:blue;stroke:pink;stroke-width:" + Double.toString(str.get_stroke()) + "5;fill-opacity:0.1;stroke-opacity:0.9\" />  "
-                                +   "</svg>");
-                    break;
+                                +   "\n       <rect x=\"" + Double.toString(str.getX1())  + "\" y=\"" + Double.toString(str.getY1())
+                                +   "\" width=\"" + Double.toString(str.getX2()) + "\" height=\"" + Double.toString(str.getY2())  + "\"  "
+                                +   "\n        style=\"fill:blue;stroke:pink;stroke-width:" + Double.toString(str.get_stroke()) + "5;fill-opacity:0.1;stroke-opacity:0.9\" />  "
+                                +   "\n</svg>\n");
+                } else if(objects.get(i).isCircle()){
+                    file.write(     "<svg width=\"400\" height=\"180\">  "
+                                +   "\n       <rect x=\"" + Double.toString(str.getX1())  + "\" y=\"" + Double.toString(str.getY1())
+                                +   "\" width=\"" + Double.toString(str.getX2()) + "\" height=\"" + Double.toString(str.getY2())  + "\"  "
+                                +   "\n        style=\"fill:blue;stroke:pink;stroke-width:" + Double.toString(str.get_stroke()) + "5;fill-opacity:0.1;stroke-opacity:0.9\" />  "
+                                +   "\n</svg>\n");
+                } else if(objects.get(i).isElypse()){
+                    file.write(     "<svg width=\"400\" height=\"180\">  "
+                                +   "\n       <rect x=\"" + Double.toString(str.getX1())  + "\" y=\"" + Double.toString(str.getY1())
+                                +   "\" width=\"" + Double.toString(str.getX2()) + "\" height=\"" + Double.toString(str.getY2())  + "\"  "
+                                +   "\n        style=\"fill:blue;stroke:pink;stroke-width:" + Double.toString(str.get_stroke()) + "5;fill-opacity:0.1;stroke-opacity:0.9\" />  "
+                                +   "\n</svg>\n");
+                } else if(objects.get(i).isLine()){
+                    file.write(     "<svg width=\"400\" height=\"180\">  "
+                                +   "\n       <rect x=\"" + Double.toString(str.getX1())  + "\" y=\"" + Double.toString(str.getY1())
+                                +   "\" width=\"" + Double.toString(str.getX2()) + "\" height=\"" + Double.toString(str.getY2())  + "\"  "
+                                +   "\n        style=\"fill:blue;stroke:pink;stroke-width:" + Double.toString(str.get_stroke()) + "5;fill-opacity:0.1;stroke-opacity:0.9\" />  "
+                                +   "\n</svg>\n");
+                } else if(objects.get(i).isPolygon()){
+                    file.write(     "<svg width=\"400\" height=\"180\">  "
+                                +   "\n       <rect x=\"" + Double.toString(str.getX1())  + "\" y=\"" + Double.toString(str.getY1())
+                                +   "\" width=\"" + Double.toString(str.getX2()) + "\" height=\"" + Double.toString(str.getY2())  + "\"  "
+                                +   "\n        style=\"fill:blue;stroke:pink;stroke-width:" + Double.toString(str.get_stroke()) + "5;fill-opacity:0.1;stroke-opacity:0.9\" />  "
+                                +   "\n</svg>\n");
+                } else if(objects.get(i).isText()){
+                    file.write(     "<svg width=\"400\" height=\"180\">  "
+                                +   "\n       <rect x=\"" + Double.toString(str.getX1())  + "\" y=\"" + Double.toString(str.getY1())
+                                +   "\" width=\"" + Double.toString(str.getX2()) + "\" height=\"" + Double.toString(str.getY2())  + "\"  "
+                                +   "\n        style=\"fill:blue;stroke:pink;stroke-width:" + Double.toString(str.get_stroke()) + "5;fill-opacity:0.1;stroke-opacity:0.9\" />  "
+                                +   "\n</svg>\n");
                 }
- 
-            }
-            
-            /*
 
-            for (Data d : variables.values())
-            {
-                Structure s = d.getStructure();
-                file.write(     "<svg width=\"400\" height=\"180\">  "
-                            +   "<rect x=\"50\" y=\"20\" width=\"150\" height=\"150\"  "
-                            +   "style=\"fill:blue;stroke:pink;stroke-width:" + Double.toString(s.get_stroke()) + "5;fill-opacity:0.1;stroke-opacity:0.9\" />  "
-                            +   "</svg>");
-                
-                
-                
-                "<svg width="400" height="180">
-                <rect x="50" y="20" width="150" height="150"
-                style="fill:blue;stroke:pink;stroke-width:5;fill-opacity:0.1;stroke-opacity:0.9" />
-                </svg>"
-                
-            }*/
+
+
+
+
+            }
+
+            file.write("\n" + "</body>\n" + "</html>\n");
             file.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    
 }

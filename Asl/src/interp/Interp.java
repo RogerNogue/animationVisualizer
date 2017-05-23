@@ -62,7 +62,7 @@ public class Interp {
 
     /** Nested levels of function calls. */
     private int function_nesting = -1;
-    
+
     /** Stack of names of functions*/
     private ArrayList<String> functionNames;
 
@@ -133,6 +133,7 @@ public class Interp {
         if (T == null) return;
         switch(T.getType()) {
             case AslLexer.INT: T.setIntValue(); break;
+            case AslLexer.DOUBLE: T.setDoubleValue(); break;
             case AslLexer.STRING: T.setStringValue(); break;
             case AslLexer.BOOLEAN: T.setBooleanValue(); break;
             default: break;
@@ -161,9 +162,9 @@ public class Interp {
      * @return The data returned by the function.
      */
     private Data executeFunction (String funcname, AslTree args) {
-    
+
         functionNames.add(funcname);
-        
+
         // Get the AST of the function
         AslTree f = FuncName2Tree.get(funcname);
         if (f == null) throw new RuntimeException(" function " + funcname + " not declared");
@@ -200,9 +201,9 @@ public class Interp {
 
         // Dumps trace information
         if (trace != null) traceReturn(f, result, Arg_values);
-        
+
         functionNames.remove(functionNames.size() - 1);
-        
+
         // Destroy the activation record
         Stack.popActivationRecord();
 
@@ -381,7 +382,7 @@ public class Interp {
                         Data text = new Data(text1, par2, par3);
                         Stack.defineVariable(t.getChild(0).getText(), text);
                         SVGParser.store(text, functionNames.get(functionNames.size() - 1) + t.getChild(0).getText());
-                        
+
                         return null;
                     default: assert false; // Should never happen
                 }
@@ -398,7 +399,7 @@ public class Interp {
                         saux.set_fill_RGB(  evaluateExpression(t.getChild(1).getChild(0)).getIntegerValue(),
                                             evaluateExpression(t.getChild(1).getChild(1)).getIntegerValue(),
                                             evaluateExpression(t.getChild(1).getChild(2)).getIntegerValue());
-                        return null;                    
+                        return null;
                     case AslLexer.STROKE:
                         aux = Stack.getVariable(t.getChild(0).getText());
                         saux = aux.getStructure();
@@ -412,8 +413,8 @@ public class Interp {
                                                     evaluateExpression(t.getChild(1).getChild(2)).getIntegerValue(),
                                                     evaluateExpression(t.getChild(1).getChild(3)).getIntegerValue(),
                                                     evaluateExpression(t.getChild(1).getChild(4)).getIntegerValue());
-                        
-                        return null;                        
+
+                        return null;
                     case AslLexer.VISIBILITY:
                         aux = Stack.getVariable(t.getChild(0).getText());
                         saux = aux.getStructure();
@@ -422,23 +423,23 @@ public class Interp {
                     case AslLexer.SIZE:
                         switch (t.getChild(0).getType()) {
                             case AslLexer.VERTEXPOSITION:
-                            
+
                                 return null;
                             case AslLexer.RADIUS:
-                                
+
                                 return null;
                             case AslLexer.TWORADIUS:
-                                
+
                                 return null;
                             case AslLexer.WIDTH:
-                                
+
                                 return null;
                             case AslLexer.HEIGHT:
-                                
+
                                 return null;
                         }
                         return null;
-                        
+
                 }
                 return null;
                 /**codi antic*/
@@ -465,7 +466,7 @@ public class Interp {
                 return null;
             case AslLexer.MODIFYSIZE:
                 //quad and elypse
-                
+
 
                 return null;
             case AslLexer.MODIFYRADIOUS:
@@ -515,7 +516,7 @@ public class Interp {
                 break;
             // A double literal
             case AslLexer.DOUBLE:
-                value = new Data((double)t.getIntValue());
+                value = new Data(t.getDoubleValue());
                 break;
             // A Boolean literal
             case AslLexer.BOOLEAN:

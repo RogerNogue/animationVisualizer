@@ -165,6 +165,42 @@ destruction     : DESTRUCTION^ '('! ID')'!
 movement        :   (MOVE '(' ID ',' A1=atom ',' A2=atom')') -> ^(MOVE ID ^(PARAMS $A1 $A2))
         ;
 
+modify          :   MODIFY^ ID (color | stroke | size | visibility)
+        ;
+        
+//Color (red, green, blue)        
+color           : COLOR^  '('!  A1=atom ','! A2=atom ','! A3=atom ')'!
+    ;
+
+//Stroke (width, red, green, blue, alpha?)
+stroke          : STROKE^ '('!  A1=atom ','! A2=atom ','! A3=atom ','! A4=atom ( ','! A5=atom )? ')'!
+    ;
+    
+//modificacions de mida:
+size            : SIZE^ (vertex | radius | tworadius | width | height)       
+        ;
+
+//Radius (R) //es defineix el nou radi
+radius         :   RADIUS^ '('! A1=atom')'!
+        ;
+        
+//TwoRadius ( R1, R2) //es defineixen els 2 nous radis
+tworadius      :   TWORADIUS^ '('! A1=atom ','! A2=atom ')'!
+        ;
+        
+//VertexPosition (n(numero del vertex), x, y)
+vertex          :   VERTEXPOSITION^ '('! A1=atom ','! A2=atom ','! A3=atom ')'!
+        ;
+        
+//Width (n(nova mida amplada))
+width           :   WIDTH^ '('! A1=atom ')'!
+        ;
+
+//height (n(nova mida alcada))
+height          :   HEIGHT^ '('! A1=atom ')'!
+        ;
+        
+        /*
 modify          :   MODIFY^ (color | stroke | size | visibility)
         ;
         
@@ -199,7 +235,7 @@ width           :   WIDTH^ '('! ID ','! A1=atom ')'!
 //height (ID, n(nova mida alcada))
 height          :   HEIGHT^ '('! ID ','! A1=atom ')'!
         ;
-
+*/
 
 //Visibility (ID, opacity)) //0<= opacity <= 1
 visibility      : VISIBILITY^ '('! ID ','! A1=atom ')'!

@@ -392,15 +392,18 @@ public class Interp {
                 Stack.deleteVariable(t.getChild(0).getChild(0).getText());
                 return null;
             case AslLexer.MODIFY:
-                switch (t.getChild(0).getType()) {
+                switch (t.getChild(1).getType()) {
                     case AslLexer.COLOR:
                         Data aux = Stack.getVariable(t.getChild(0).getText());
                         Structure saux = aux.getStructure();
+                        System.out.println(evaluateExpression(t.getChild(1).getChild(0)).getIntegerValue());
                         saux.set_fill_RGB(  evaluateExpression(t.getChild(1).getChild(0)).getIntegerValue(),
                                             evaluateExpression(t.getChild(1).getChild(1)).getIntegerValue(),
                                             evaluateExpression(t.getChild(1).getChild(2)).getIntegerValue());
+                        
                         return null;
                     case AslLexer.STROKE:
+                        System.out.println("la variable es = " + t.getChild(0).getText());
                         aux = Stack.getVariable(t.getChild(0).getText());
                         saux = aux.getStructure();
                         saux.set_stroke(evaluateExpression(t.getChild(1).getChild(0)).getDoubleValue());

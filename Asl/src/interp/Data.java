@@ -78,7 +78,7 @@ public class Data {
     }
 
     public double getDoubleValue(){
-        assert type == Type.DOUBLE;
+        assert (type == Type.INTEGER || type == Type.DOUBLE);
         return value;
     }
 

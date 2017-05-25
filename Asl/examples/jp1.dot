@@ -1,1 +1,52 @@
-(LIST_FUNCTIONS (func main PARAMS (LIST_INSTR (Create q (Quad 10. 10. 20. 20.)) (Move q (PARAMS 5. 5.)) (Modify (Color q 0. 255. 0.)) (Modify (Stroke q 5. 0. 0. 255.)) (Modify (Size (Width q 20.))) (Modify (Size (Height q 20.))) (Modify (Visibility q 90)))))
+digraph {
+
+	ordering=out;
+	ranksep=.4;
+	bgcolor="lightgrey"; node [shape=box, fixedsize=false, fontsize=12, fontname="Helvetica-bold", fontcolor="blue"
+		width=.25, height=.25, color="black", fillcolor="white", style="filled, solid, bold"];
+	edge [arrowsize=.5, color="black", style="bold"]
+
+  n0 [label="LIST_FUNCTIONS"];
+  n1 [label="func"];
+  n1 [label="func"];
+  n2 [label="main"];
+  n3 [label="PARAMS"];
+  n4 [label="LIST_INSTR"];
+  n4 [label="LIST_INSTR"];
+  n5 [label="Create"];
+  n5 [label="Create"];
+  n6 [label="q"];
+  n7 [label="Quad"];
+  n7 [label="Quad"];
+  n8 [label="10."];
+  n9 [label="10."];
+  n10 [label="60."];
+  n11 [label="60."];
+  n12 [label="Modify"];
+  n12 [label="Modify"];
+  n13 [label="q"];
+  n14 [label="Color"];
+  n14 [label="Color"];
+  n15 [label="255"];
+  n16 [label="0"];
+  n17 [label="0"];
+
+  n0 -> n1 // "LIST_FUNCTIONS" -> "func"
+  n1 -> n2 // "func" -> "main"
+  n1 -> n3 // "func" -> "PARAMS"
+  n1 -> n4 // "func" -> "LIST_INSTR"
+  n4 -> n5 // "LIST_INSTR" -> "Create"
+  n5 -> n6 // "Create" -> "q"
+  n5 -> n7 // "Create" -> "Quad"
+  n7 -> n8 // "Quad" -> "10."
+  n7 -> n9 // "Quad" -> "10."
+  n7 -> n10 // "Quad" -> "60."
+  n7 -> n11 // "Quad" -> "60."
+  n4 -> n12 // "LIST_INSTR" -> "Modify"
+  n12 -> n13 // "Modify" -> "q"
+  n12 -> n14 // "Modify" -> "Color"
+  n14 -> n15 // "Color" -> "255"
+  n14 -> n16 // "Color" -> "0"
+  n14 -> n17 // "Color" -> "0"
+
+}

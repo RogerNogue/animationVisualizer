@@ -152,7 +152,7 @@ elypse          : ELYPSE^ '('! atom ','! atom ','! atom ','! atom')'!
 
 line            : LINE^  '('! atom (','! atom)* ')'!
             ;
-
+//Polygon (x1,y1,x2,y2,x3,y3)
 polygon         : POLYGON^ '('! atom (','! atom)* ')'!
             ;
 
@@ -199,67 +199,12 @@ width           :   WIDTH^ '('! A1=atom ')'!
 //height (n(nova mida alcada))
 height          :   HEIGHT^ '('! A1=atom ')'!
         ;
-        
-        /*
-modify          :   MODIFY^ (color | stroke | size | visibility)
-        ;
-        
-//Color (ID, red, green, blue)        
-color           : COLOR^  '('! ID ','! A1=atom ','! A2=atom ','! A3=atom ')'!
-    ;
-
-//Stroke (ID, width, red, green, blue, alpha?)
-stroke          : STROKE^ '('! ID ','! A1=atom ','! A2=atom ','! A3=atom ','! A4=atom ( ','! A5=atom )? ')'!
-    ;
-    
-//modificacions de mida:
-size            : SIZE^ (vertex | radius | tworadius | width | height)       
-        ;
-
-//Radius (ID, R) //es defineix el nou radi
-radius         :   RADIUS^ '('! ID ','! A1=atom')'!
-        ;
-        
-//TwoRadius (ID, R1, R2) //es defineixen els 2 nous radis
-tworadius      :   TWORADIUS^ '('! ID ','! A1=atom ','! A2=atom ')'!
-        ;
-        
-//VertexPosition (ID, n(numero del vertex), x, y)
-vertex          :   VERTEXPOSITION^ '('! ID ','! A1=atom ','! A2=atom ','! A3=atom ')'!
-        ;
-        
-//Width (ID, n(nova mida amplada))
-width           :   WIDTH^ '('! ID ','! A1=atom ')'!
-        ;
-
-//height (ID, n(nova mida alcada))
-height          :   HEIGHT^ '('! ID ','! A1=atom ')'!
-        ;
-*/
 
 //Visibility (ID, opacity)) //0<= opacity <= 1
 visibility      : VISIBILITY^ '('! ID ','! A1=atom ')'!
         ;
 
-        
-/*codi old
-modifycolor     :   (MODIFYCOLOR '('  ID ','  A1=atom ','  A2=atom ','  A3=atom')') -> ^(MODIFYCOLOR ID ^(PARAMS $A1 $A2 $A3))
-        ;
 
-// width i RGB
-modifystroke    :   (MODIFYSTROKE '(' ID ','  A1=atom ','  A2=atom ','  A3=atom ','  A4=atom')') -> ^(MODIFYSTROKE ID ^(PARAMS $A1 $A2 $A3 $A4))
-        ;
-//mida per al quadrat i elipsis
-modifysize      :   (MODIFYSIZE '(' ID ','  A1=atom ','  A2=atom')') -> ^(MODIFYSIZE ID ^(PARAMS $A1 $A2))
-        ;
-//mida cercle
-modifyradious   :   MODIFYRADIOUS '(' ID ','  A1=atom')' -> ^(MODIFYRADIOUS ID ^(PARAMS $A1))
-        ;
-
-modifyVisibility    :   MODIFYVISIBILITY '(' ID ','  A1=atom')' -> ^(MODIFYVISIBILITY ID ^(PARAMS $A1))
-        ;
-        
-*/        
 
 source          :  SOURCE^ STRING  '('!  atom (','! atom )* ')'! 
         ;
@@ -344,13 +289,6 @@ TWORADIUS           : 'TwoRadius';
 HEIGHT              : 'Height';
 WIDTH               : 'Width';
 STROKE              : 'Stroke';
-/*
-MODIFYCOLOR         : 'ModifyColor';
-MODIFYSTROKE        : 'ModifyStroke';
-MODIFYSIZE          : 'ModifySize';
-MODIFYRADIOUS       : 'ModifyRadious';
-MODIFYVISIBILITY    : 'ModifyVisibility';
-*/
 SOURCE              : 'Source';
 
 

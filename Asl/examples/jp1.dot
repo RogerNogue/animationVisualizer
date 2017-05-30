@@ -27,9 +27,94 @@ digraph {
   n13 [label="q"];
   n14 [label="Color"];
   n14 [label="Color"];
-  n15 [label="255"];
-  n16 [label="0"];
+  n15 [label="50"];
+  n16 [label="50"];
   n17 [label="0"];
+  n18 [label="Modify"];
+  n18 [label="Modify"];
+  n19 [label="q"];
+  n20 [label="Color"];
+  n20 [label="Color"];
+  n21 [label="255"];
+  n22 [label="0"];
+  n23 [label="0"];
+  n24 [label="Modify"];
+  n24 [label="Modify"];
+  n25 [label="q"];
+  n26 [label="Stroke"];
+  n26 [label="Stroke"];
+  n27 [label="5"];
+  n28 [label="255"];
+  n29 [label="0"];
+  n30 [label="0"];
+  n31 [label="Create"];
+  n31 [label="Create"];
+  n32 [label="e"];
+  n33 [label="Circle"];
+  n33 [label="Circle"];
+  n34 [label="50."];
+  n35 [label="650."];
+  n36 [label="50."];
+  n37 [label="Modify"];
+  n37 [label="Modify"];
+  n38 [label="e"];
+  n39 [label="Color"];
+  n39 [label="Color"];
+  n40 [label="255"];
+  n41 [label="0"];
+  n42 [label="0"];
+  n43 [label="Modify"];
+  n43 [label="Modify"];
+  n44 [label="e"];
+  n45 [label="Stroke"];
+  n45 [label="Stroke"];
+  n46 [label="10"];
+  n47 [label="255"];
+  n48 [label="0"];
+  n49 [label="0"];
+  n50 [label="Modify"];
+  n50 [label="Modify"];
+  n51 [label="e"];
+  n52 [label="Size"];
+  n52 [label="Size"];
+  n53 [label="VertexPosition"];
+  n53 [label="VertexPosition"];
+  n54 [label="5"];
+  n55 [label="50"];
+  n56 [label="50"];
+  n57 [label="Modify"];
+  n57 [label="Modify"];
+  n58 [label="e"];
+  n59 [label="Size"];
+  n59 [label="Size"];
+  n60 [label="Radius"];
+  n60 [label="Radius"];
+  n61 [label="50."];
+  n62 [label="Modify"];
+  n62 [label="Modify"];
+  n63 [label="e"];
+  n64 [label="Size"];
+  n64 [label="Size"];
+  n65 [label="TwoRadius"];
+  n65 [label="TwoRadius"];
+  n66 [label="50."];
+  n67 [label="50."];
+  n68 [label="Modify"];
+  n68 [label="Modify"];
+  n69 [label="q"];
+  n70 [label="Size"];
+  n70 [label="Size"];
+  n71 [label="Width"];
+  n71 [label="Width"];
+  n72 [label="60.0"];
+  n73 [label="Modify"];
+  n73 [label="Modify"];
+  n74 [label="q"];
+  n75 [label="Size"];
+  n75 [label="Size"];
+  n76 [label="Height"];
+  n76 [label="Height"];
+  n77 [label="60.0"];
 
   n0 -> n1 // "LIST_FUNCTIONS" -> "func"
   n1 -> n2 // "func" -> "main"
@@ -45,8 +130,68 @@ digraph {
   n4 -> n12 // "LIST_INSTR" -> "Modify"
   n12 -> n13 // "Modify" -> "q"
   n12 -> n14 // "Modify" -> "Color"
-  n14 -> n15 // "Color" -> "255"
-  n14 -> n16 // "Color" -> "0"
+  n14 -> n15 // "Color" -> "50"
+  n14 -> n16 // "Color" -> "50"
   n14 -> n17 // "Color" -> "0"
+  n4 -> n18 // "LIST_INSTR" -> "Modify"
+  n18 -> n19 // "Modify" -> "q"
+  n18 -> n20 // "Modify" -> "Color"
+  n20 -> n21 // "Color" -> "255"
+  n20 -> n22 // "Color" -> "0"
+  n20 -> n23 // "Color" -> "0"
+  n4 -> n24 // "LIST_INSTR" -> "Modify"
+  n24 -> n25 // "Modify" -> "q"
+  n24 -> n26 // "Modify" -> "Stroke"
+  n26 -> n27 // "Stroke" -> "5"
+  n26 -> n28 // "Stroke" -> "255"
+  n26 -> n29 // "Stroke" -> "0"
+  n26 -> n30 // "Stroke" -> "0"
+  n4 -> n31 // "LIST_INSTR" -> "Create"
+  n31 -> n32 // "Create" -> "e"
+  n31 -> n33 // "Create" -> "Circle"
+  n33 -> n34 // "Circle" -> "50."
+  n33 -> n35 // "Circle" -> "650."
+  n33 -> n36 // "Circle" -> "50."
+  n4 -> n37 // "LIST_INSTR" -> "Modify"
+  n37 -> n38 // "Modify" -> "e"
+  n37 -> n39 // "Modify" -> "Color"
+  n39 -> n40 // "Color" -> "255"
+  n39 -> n41 // "Color" -> "0"
+  n39 -> n42 // "Color" -> "0"
+  n4 -> n43 // "LIST_INSTR" -> "Modify"
+  n43 -> n44 // "Modify" -> "e"
+  n43 -> n45 // "Modify" -> "Stroke"
+  n45 -> n46 // "Stroke" -> "10"
+  n45 -> n47 // "Stroke" -> "255"
+  n45 -> n48 // "Stroke" -> "0"
+  n45 -> n49 // "Stroke" -> "0"
+  n4 -> n50 // "LIST_INSTR" -> "Modify"
+  n50 -> n51 // "Modify" -> "e"
+  n50 -> n52 // "Modify" -> "Size"
+  n52 -> n53 // "Size" -> "VertexPosition"
+  n53 -> n54 // "VertexPosition" -> "5"
+  n53 -> n55 // "VertexPosition" -> "50"
+  n53 -> n56 // "VertexPosition" -> "50"
+  n4 -> n57 // "LIST_INSTR" -> "Modify"
+  n57 -> n58 // "Modify" -> "e"
+  n57 -> n59 // "Modify" -> "Size"
+  n59 -> n60 // "Size" -> "Radius"
+  n60 -> n61 // "Radius" -> "50."
+  n4 -> n62 // "LIST_INSTR" -> "Modify"
+  n62 -> n63 // "Modify" -> "e"
+  n62 -> n64 // "Modify" -> "Size"
+  n64 -> n65 // "Size" -> "TwoRadius"
+  n65 -> n66 // "TwoRadius" -> "50."
+  n65 -> n67 // "TwoRadius" -> "50."
+  n4 -> n68 // "LIST_INSTR" -> "Modify"
+  n68 -> n69 // "Modify" -> "q"
+  n68 -> n70 // "Modify" -> "Size"
+  n70 -> n71 // "Size" -> "Width"
+  n71 -> n72 // "Width" -> "60.0"
+  n4 -> n73 // "LIST_INSTR" -> "Modify"
+  n73 -> n74 // "Modify" -> "q"
+  n73 -> n75 // "Modify" -> "Size"
+  n75 -> n76 // "Size" -> "Height"
+  n76 -> n77 // "Height" -> "60.0"
 
 }

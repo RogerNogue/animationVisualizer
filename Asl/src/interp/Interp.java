@@ -400,6 +400,12 @@ public class Interp {
                         saux.set_fill_RGB(  evaluateExpression(t.getChild(1).getChild(0)).getIntegerValue(),
                                             evaluateExpression(t.getChild(1).getChild(1)).getIntegerValue(),
                                             evaluateExpression(t.getChild(1).getChild(2)).getIntegerValue());
+                        aux = Stack.getVariable(t.getChild(0).getText());
+                        saux = aux.getStructure();
+                        System.out.println("color de la variable del stack =  " + Integer.toString(saux.get_fill_red()) + ", " + 
+                                            Integer.toString(saux.get_fill_green()) + ", " + Integer.toString(saux.get_fill_blue()));
+                        
+                                            
                         
                         return null;
                     case AslLexer.STROKE:
@@ -426,18 +432,42 @@ public class Interp {
                     case AslLexer.SIZE:
                         switch (t.getChild(0).getType()) {
                             case AslLexer.VERTEXPOSITION:
+                                aux = Stack.getVariable(t.getChild(0).getText());
+                                assert (aux.isPolygon() || aux.isLine()); //nomes es pot fer amb poligons i linies
+                                saux = aux.getStructure();
+                                saux.movePoint(     evaluateExpression(t.getChild(1).getChild(0).getChild(0)).getIntegerValue(), 
+                                                    evaluateExpression(t.getChild(1).getChild(0).getChild(2)).getDoubleValue(),
+                                                    evaluateExpression(t.getChild(1).getChild(0).getChild(1)).getDoubleValue()
+                                                );
 
                                 return null;
                             case AslLexer.RADIUS:
+                                aux = Stack.getVariable(t.getChild(0).getText());
+                                assert (aux.isCircle()); //nomes es pot fer amb poligons i linies
+                                saux = aux.getStructure();
+                                saux.setRad(evaluateExpression(t.getChild(1).getChild(0).getChild(0)).getDoubleValue());
 
                                 return null;
                             case AslLexer.TWORADIUS:
+                                aux = Stack.getVariable(t.getChild(0).getText());
+                                assert (aux.isElypse()); //nomes es pot fer amb poligons i linies
+                                saux = aux.getStructure();
+                                saux.setTwoRadius(  evaluateExpression(t.getChild(1).getChild(0).getChild(0)).getDoubleValue(),
+                                                    evaluateExpression(t.getChild(1).getChild(0).getChild(1)).getDoubleValue());
 
                                 return null;
                             case AslLexer.WIDTH:
+                                aux = Stack.getVariable(t.getChild(0).getText());
+                                assert (aux.isQuad()); //nomes es pot fer amb poligons i linies
+                                saux = aux.getStructure();
+                                saux.setWidth(evaluateExpression(t.getChild(1).getChild(0).getChild(0)).getDoubleValue());
 
                                 return null;
                             case AslLexer.HEIGHT:
+                                aux = Stack.getVariable(t.getChild(0).getText());
+                                assert (aux.isQuad()); //nomes es pot fer amb poligons i linies
+                                saux = aux.getStructure();
+                                saux.setHeight(evaluateExpression(t.getChild(1).getChild(0).getChild(0)).getDoubleValue());
 
                                 return null;
                         }

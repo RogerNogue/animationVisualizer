@@ -117,9 +117,16 @@ public class Structure{
     public double getRadX(){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
     public double getRadY(){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
     public double getRad(){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+    public void setRad(double r){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+    
+    public void setTwoRadius(double rx, double ry){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+    
+    public void setWidth(double w){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+    public void setHeight(double h){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
 
     public void setValues(ArrayList<Double> values){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
     public void setValues(double px, double py, double rx, double ry){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
     public void setValues(double px, double py, double r){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
     public void setValues(String text, double px, double py){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
+    public void movePoint(int position, double x, double y){ throw new UnsupportedOperationException("Unsupported Operation Exception");}
 }

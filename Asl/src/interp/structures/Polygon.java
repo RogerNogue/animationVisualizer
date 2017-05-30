@@ -20,6 +20,11 @@ public class Polygon extends Structure{
     public void setValues(ArrayList<Double> values){
         setPolygonValues(values);
     }
+    
+    public void movePoint(int position, double x, double y){
+        vals.set(position*2, x);
+        vals.set(position*2+1, y);
+    }
 
     public ArrayList<Double> getVals(){
         return vals;

@@ -35,4 +35,7 @@ public class Circle extends Structure{
     public double getRad(){
         return rad;
     }
+    public void setRad(double r){
+        rad = r;
+    }
 }

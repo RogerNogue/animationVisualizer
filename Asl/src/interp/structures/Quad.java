@@ -26,6 +26,14 @@ public class Quad extends Structure{
     public void setValues(double px1, double py1, double px2, double py2){
         setQuadValues(px1, py1, px2, py2);
     }
+    
+    public void setWidth(double w){
+        x2 += w;
+    }
+    
+    public void setHeight(double h){
+        y2 += h;
+    }
 
     public double getX1(){
         return x1;

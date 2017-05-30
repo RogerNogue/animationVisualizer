@@ -57,7 +57,7 @@ public class Data {
     }
     Data(double px, double py, double r){ type = Type.CIRCLE; figure = new Circle(px, py, r); }
     Data(String textstr, double px, double py) { type = Type.TEXT; figure = new Text(textstr, px, py); }
-
+    
     /** Returns the type of data */
     public Type getType() { return type; }
 

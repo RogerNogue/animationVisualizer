@@ -26,6 +26,11 @@ public class Elypse extends Structure{
     public void setValues(double px, double py, double rx, double ry){
         setElypseValues(px, py, rx, ry);
     }
+    
+    public void setTwoRadius(double rx, double ry){
+        radx = rx;
+        rady = ry;
+    }
 
     public double getX(){
         return x;

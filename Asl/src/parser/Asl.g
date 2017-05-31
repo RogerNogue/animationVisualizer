@@ -146,10 +146,10 @@ quadrat         : QUAD^ '('! atom ','! atom ','! atom ','! atom')'!
 
 circle          : CIRCLE^ '('! atom ','! atom ','! atom ')'!
             ;
-
+//Elypse (x, y, radx, rady)
 elypse          : ELYPSE^ '('! atom ','! atom ','! atom ','! atom')'!
             ;
-
+//Line (x1,y1,x2,y2,x3,y3)
 line            : LINE^  '('! atom (','! atom)* ')'!
             ;
 //Polygon (x1,y1,x2,y2,x3,y3)
@@ -201,7 +201,7 @@ height          :   HEIGHT^ '('! A1=atom ')'!
         ;
 
 //Visibility (ID, opacity)) //0<= opacity <= 1
-visibility      : VISIBILITY^ '('! ID ','! A1=atom ')'!
+visibility      : VISIBILITY^ '('! A1=atom ')'!
         ;
 
 

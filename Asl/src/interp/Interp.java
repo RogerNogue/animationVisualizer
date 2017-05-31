@@ -352,12 +352,18 @@ public class Interp {
                         ArrayList<Double> puntsline = new ArrayList<Double>();
                         s = "line";
                         i = 0;
-                        while(t.getChild(i) != null){
-                            puntsline.add(evaluateExpression(t.getChild(i)).getDoubleValue());
+                        while(t.getChild(1).getChild(i) != null){
+                            puntsline.add(evaluateExpression(t.getChild(1).getChild(i)).getDoubleValue());
                             ++i;
                         }
+                        if(i%2 == 1){
+                            throw new UnsupportedOperationException("Odd amount of coordinate parameters when creating the polygon");
+                        }
                         Data line = new Data(puntsline, s);
+                        Structure structureaux = line.getStructure();
+                        structureaux.set_stroke(3.0);
                         Stack.defineVariable(t.getChild(0).getText(), line);
+                        
                         SVGParser.store(line, functionNames.get(functionNames.size() - 1) + t.getChild(0).getText());
 
                         return null;
@@ -365,9 +371,13 @@ public class Interp {
                         ArrayList<Double> puntspoly = new ArrayList<Double>();
                         s = "polygon";
                         i = 0;
-                        while(t.getChild(i) != null){
-                            puntspoly.add(evaluateExpression(t.getChild(i)).getDoubleValue());
+                        while(t.getChild(1).getChild(i) != null){
+                            puntspoly.add(evaluateExpression(t.getChild(1).getChild(i)).getDoubleValue());
                             ++i;
+                            //System.out.print("ola, la i es = " + Integer.toString(i) + " \n");
+                        }
+                        if(i%2 == 1){
+                            throw new UnsupportedOperationException("Odd amount of coordinate parameters when creating the polygon");
                         }
                         Data polygon = new Data(puntspoly, s);
                         Stack.defineVariable(t.getChild(0).getText(), polygon);
@@ -409,25 +419,26 @@ public class Interp {
                         
                         return null;
                     case AslLexer.STROKE:
-                        System.out.println("la variable es = " + t.getChild(0).getText());
                         aux = Stack.getVariable(t.getChild(0).getText());
                         saux = aux.getStructure();
                         saux.set_stroke(evaluateExpression(t.getChild(1).getChild(0)).getDoubleValue());
-                        if(t.getChild(1).getChild(4) == null)
+                        if(t.getChild(1).getChild(4) == null){
                             saux.set_stroke_RGB(    evaluateExpression(t.getChild(1).getChild(1)).getIntegerValue(),
                                                     evaluateExpression(t.getChild(1).getChild(2)).getIntegerValue(),
                                                     evaluateExpression(t.getChild(1).getChild(3)).getIntegerValue());
-                        else
+                                                    }
+                        else{
                             saux.set_stroke_RGB(    evaluateExpression(t.getChild(1).getChild(1)).getIntegerValue(),
                                                     evaluateExpression(t.getChild(1).getChild(2)).getIntegerValue(),
                                                     evaluateExpression(t.getChild(1).getChild(3)).getIntegerValue(),
-                                                    evaluateExpression(t.getChild(1).getChild(4)).getIntegerValue());
+                                                    evaluateExpression(t.getChild(1).getChild(4)).getDoubleValue());
+                                                    }
 
                         return null;
                     case AslLexer.VISIBILITY:
                         aux = Stack.getVariable(t.getChild(0).getText());
                         saux = aux.getStructure();
-                        saux.set_opacity(evaluateExpression(t.getChild(0).getChild(1)).getDoubleValue());
+                        saux.set_opacity(evaluateExpression(t.getChild(1).getChild(0)).getDoubleValue());
                         return null;
                     case AslLexer.SIZE:
                         switch (t.getChild(0).getType()) {

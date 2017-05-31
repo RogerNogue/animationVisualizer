@@ -43,78 +43,116 @@ digraph {
   n25 [label="q"];
   n26 [label="Stroke"];
   n26 [label="Stroke"];
-  n27 [label="5"];
-  n28 [label="255"];
-  n29 [label="0"];
+  n27 [label="20"];
+  n28 [label="0"];
+  n29 [label="255"];
   n30 [label="0"];
-  n31 [label="Create"];
-  n31 [label="Create"];
-  n32 [label="e"];
-  n33 [label="Circle"];
-  n33 [label="Circle"];
-  n34 [label="50."];
-  n35 [label="650."];
-  n36 [label="50."];
-  n37 [label="Modify"];
-  n37 [label="Modify"];
-  n38 [label="e"];
-  n39 [label="Color"];
-  n39 [label="Color"];
-  n40 [label="255"];
-  n41 [label="0"];
+  n31 [label="1"];
+  n32 [label="Create"];
+  n32 [label="Create"];
+  n33 [label="e"];
+  n34 [label="Circle"];
+  n34 [label="Circle"];
+  n35 [label="50."];
+  n36 [label="650."];
+  n37 [label="50."];
+  n38 [label="Modify"];
+  n38 [label="Modify"];
+  n39 [label="e"];
+  n40 [label="Color"];
+  n40 [label="Color"];
+  n41 [label="255"];
   n42 [label="0"];
-  n43 [label="Modify"];
-  n43 [label="Modify"];
-  n44 [label="e"];
-  n45 [label="Stroke"];
-  n45 [label="Stroke"];
-  n46 [label="10"];
-  n47 [label="255"];
+  n43 [label="0"];
+  n44 [label="Modify"];
+  n44 [label="Modify"];
+  n45 [label="e"];
+  n46 [label="Stroke"];
+  n46 [label="Stroke"];
+  n47 [label="30"];
   n48 [label="0"];
   n49 [label="0"];
-  n50 [label="Modify"];
-  n50 [label="Modify"];
-  n51 [label="e"];
-  n52 [label="Size"];
-  n52 [label="Size"];
-  n53 [label="VertexPosition"];
-  n53 [label="VertexPosition"];
-  n54 [label="5"];
-  n55 [label="50"];
-  n56 [label="50"];
-  n57 [label="Modify"];
-  n57 [label="Modify"];
-  n58 [label="e"];
-  n59 [label="Size"];
-  n59 [label="Size"];
-  n60 [label="Radius"];
-  n60 [label="Radius"];
-  n61 [label="50."];
-  n62 [label="Modify"];
-  n62 [label="Modify"];
-  n63 [label="e"];
-  n64 [label="Size"];
-  n64 [label="Size"];
-  n65 [label="TwoRadius"];
-  n65 [label="TwoRadius"];
-  n66 [label="50."];
-  n67 [label="50."];
-  n68 [label="Modify"];
-  n68 [label="Modify"];
-  n69 [label="q"];
-  n70 [label="Size"];
-  n70 [label="Size"];
-  n71 [label="Width"];
-  n71 [label="Width"];
-  n72 [label="60.0"];
-  n73 [label="Modify"];
-  n73 [label="Modify"];
-  n74 [label="q"];
-  n75 [label="Size"];
-  n75 [label="Size"];
-  n76 [label="Height"];
-  n76 [label="Height"];
-  n77 [label="60.0"];
+  n50 [label="255"];
+  n51 [label="0.5"];
+  n52 [label="Modify"];
+  n52 [label="Modify"];
+  n53 [label="e"];
+  n54 [label="Visibility"];
+  n54 [label="Visibility"];
+  n55 [label="0.5"];
+  n56 [label="Modify"];
+  n56 [label="Modify"];
+  n57 [label="e"];
+  n58 [label="Size"];
+  n58 [label="Size"];
+  n59 [label="Radius"];
+  n59 [label="Radius"];
+  n60 [label="500."];
+  n61 [label="Modify"];
+  n61 [label="Modify"];
+  n62 [label="q"];
+  n63 [label="Size"];
+  n63 [label="Size"];
+  n64 [label="Width"];
+  n64 [label="Width"];
+  n65 [label="600.0"];
+  n66 [label="Modify"];
+  n66 [label="Modify"];
+  n67 [label="q"];
+  n68 [label="Size"];
+  n68 [label="Size"];
+  n69 [label="Height"];
+  n69 [label="Height"];
+  n70 [label="600.0"];
+  n71 [label="Create"];
+  n71 [label="Create"];
+  n72 [label="elip"];
+  n73 [label="Elypse"];
+  n73 [label="Elypse"];
+  n74 [label="200"];
+  n75 [label="200"];
+  n76 [label="200"];
+  n77 [label="50"];
+  n78 [label="Create"];
+  n78 [label="Create"];
+  n79 [label="poli"];
+  n80 [label="Polygon"];
+  n80 [label="Polygon"];
+  n81 [label="200"];
+  n82 [label="10"];
+  n83 [label="250"];
+  n84 [label="190"];
+  n85 [label="160"];
+  n86 [label="210"];
+  n87 [label="Modify"];
+  n87 [label="Modify"];
+  n88 [label="poli"];
+  n89 [label="Color"];
+  n89 [label="Color"];
+  n90 [label="0"];
+  n91 [label="200"];
+  n92 [label="100"];
+  n93 [label="Create"];
+  n93 [label="Create"];
+  n94 [label="lin"];
+  n95 [label="Line"];
+  n95 [label="Line"];
+  n96 [label="600"];
+  n97 [label="50"];
+  n98 [label="650"];
+  n99 [label="200"];
+  n100 [label="800"];
+  n101 [label="60"];
+  n102 [label="810"];
+  n103 [label="30"];
+  n104 [label="Create"];
+  n104 [label="Create"];
+  n105 [label="tex"];
+  n106 [label="Text"];
+  n106 [label="Text"];
+  n107 [label="500"];
+  n108 [label="600"];
+  n109 [label="\"OLA AM... YUTUB\""];
 
   n0 -> n1 // "LIST_FUNCTIONS" -> "func"
   n1 -> n2 // "func" -> "main"
@@ -142,56 +180,88 @@ digraph {
   n4 -> n24 // "LIST_INSTR" -> "Modify"
   n24 -> n25 // "Modify" -> "q"
   n24 -> n26 // "Modify" -> "Stroke"
-  n26 -> n27 // "Stroke" -> "5"
-  n26 -> n28 // "Stroke" -> "255"
-  n26 -> n29 // "Stroke" -> "0"
+  n26 -> n27 // "Stroke" -> "20"
+  n26 -> n28 // "Stroke" -> "0"
+  n26 -> n29 // "Stroke" -> "255"
   n26 -> n30 // "Stroke" -> "0"
-  n4 -> n31 // "LIST_INSTR" -> "Create"
-  n31 -> n32 // "Create" -> "e"
-  n31 -> n33 // "Create" -> "Circle"
-  n33 -> n34 // "Circle" -> "50."
-  n33 -> n35 // "Circle" -> "650."
-  n33 -> n36 // "Circle" -> "50."
-  n4 -> n37 // "LIST_INSTR" -> "Modify"
-  n37 -> n38 // "Modify" -> "e"
-  n37 -> n39 // "Modify" -> "Color"
-  n39 -> n40 // "Color" -> "255"
-  n39 -> n41 // "Color" -> "0"
-  n39 -> n42 // "Color" -> "0"
-  n4 -> n43 // "LIST_INSTR" -> "Modify"
-  n43 -> n44 // "Modify" -> "e"
-  n43 -> n45 // "Modify" -> "Stroke"
-  n45 -> n46 // "Stroke" -> "10"
-  n45 -> n47 // "Stroke" -> "255"
-  n45 -> n48 // "Stroke" -> "0"
-  n45 -> n49 // "Stroke" -> "0"
-  n4 -> n50 // "LIST_INSTR" -> "Modify"
-  n50 -> n51 // "Modify" -> "e"
-  n50 -> n52 // "Modify" -> "Size"
-  n52 -> n53 // "Size" -> "VertexPosition"
-  n53 -> n54 // "VertexPosition" -> "5"
-  n53 -> n55 // "VertexPosition" -> "50"
-  n53 -> n56 // "VertexPosition" -> "50"
-  n4 -> n57 // "LIST_INSTR" -> "Modify"
-  n57 -> n58 // "Modify" -> "e"
-  n57 -> n59 // "Modify" -> "Size"
-  n59 -> n60 // "Size" -> "Radius"
-  n60 -> n61 // "Radius" -> "50."
-  n4 -> n62 // "LIST_INSTR" -> "Modify"
-  n62 -> n63 // "Modify" -> "e"
-  n62 -> n64 // "Modify" -> "Size"
-  n64 -> n65 // "Size" -> "TwoRadius"
-  n65 -> n66 // "TwoRadius" -> "50."
-  n65 -> n67 // "TwoRadius" -> "50."
-  n4 -> n68 // "LIST_INSTR" -> "Modify"
-  n68 -> n69 // "Modify" -> "q"
-  n68 -> n70 // "Modify" -> "Size"
-  n70 -> n71 // "Size" -> "Width"
-  n71 -> n72 // "Width" -> "60.0"
-  n4 -> n73 // "LIST_INSTR" -> "Modify"
-  n73 -> n74 // "Modify" -> "q"
-  n73 -> n75 // "Modify" -> "Size"
-  n75 -> n76 // "Size" -> "Height"
-  n76 -> n77 // "Height" -> "60.0"
+  n26 -> n31 // "Stroke" -> "1"
+  n4 -> n32 // "LIST_INSTR" -> "Create"
+  n32 -> n33 // "Create" -> "e"
+  n32 -> n34 // "Create" -> "Circle"
+  n34 -> n35 // "Circle" -> "50."
+  n34 -> n36 // "Circle" -> "650."
+  n34 -> n37 // "Circle" -> "50."
+  n4 -> n38 // "LIST_INSTR" -> "Modify"
+  n38 -> n39 // "Modify" -> "e"
+  n38 -> n40 // "Modify" -> "Color"
+  n40 -> n41 // "Color" -> "255"
+  n40 -> n42 // "Color" -> "0"
+  n40 -> n43 // "Color" -> "0"
+  n4 -> n44 // "LIST_INSTR" -> "Modify"
+  n44 -> n45 // "Modify" -> "e"
+  n44 -> n46 // "Modify" -> "Stroke"
+  n46 -> n47 // "Stroke" -> "30"
+  n46 -> n48 // "Stroke" -> "0"
+  n46 -> n49 // "Stroke" -> "0"
+  n46 -> n50 // "Stroke" -> "255"
+  n46 -> n51 // "Stroke" -> "0.5"
+  n4 -> n52 // "LIST_INSTR" -> "Modify"
+  n52 -> n53 // "Modify" -> "e"
+  n52 -> n54 // "Modify" -> "Visibility"
+  n54 -> n55 // "Visibility" -> "0.5"
+  n4 -> n56 // "LIST_INSTR" -> "Modify"
+  n56 -> n57 // "Modify" -> "e"
+  n56 -> n58 // "Modify" -> "Size"
+  n58 -> n59 // "Size" -> "Radius"
+  n59 -> n60 // "Radius" -> "500."
+  n4 -> n61 // "LIST_INSTR" -> "Modify"
+  n61 -> n62 // "Modify" -> "q"
+  n61 -> n63 // "Modify" -> "Size"
+  n63 -> n64 // "Size" -> "Width"
+  n64 -> n65 // "Width" -> "600.0"
+  n4 -> n66 // "LIST_INSTR" -> "Modify"
+  n66 -> n67 // "Modify" -> "q"
+  n66 -> n68 // "Modify" -> "Size"
+  n68 -> n69 // "Size" -> "Height"
+  n69 -> n70 // "Height" -> "600.0"
+  n4 -> n71 // "LIST_INSTR" -> "Create"
+  n71 -> n72 // "Create" -> "elip"
+  n71 -> n73 // "Create" -> "Elypse"
+  n73 -> n74 // "Elypse" -> "200"
+  n73 -> n75 // "Elypse" -> "200"
+  n73 -> n76 // "Elypse" -> "200"
+  n73 -> n77 // "Elypse" -> "50"
+  n4 -> n78 // "LIST_INSTR" -> "Create"
+  n78 -> n79 // "Create" -> "poli"
+  n78 -> n80 // "Create" -> "Polygon"
+  n80 -> n81 // "Polygon" -> "200"
+  n80 -> n82 // "Polygon" -> "10"
+  n80 -> n83 // "Polygon" -> "250"
+  n80 -> n84 // "Polygon" -> "190"
+  n80 -> n85 // "Polygon" -> "160"
+  n80 -> n86 // "Polygon" -> "210"
+  n4 -> n87 // "LIST_INSTR" -> "Modify"
+  n87 -> n88 // "Modify" -> "poli"
+  n87 -> n89 // "Modify" -> "Color"
+  n89 -> n90 // "Color" -> "0"
+  n89 -> n91 // "Color" -> "200"
+  n89 -> n92 // "Color" -> "100"
+  n4 -> n93 // "LIST_INSTR" -> "Create"
+  n93 -> n94 // "Create" -> "lin"
+  n93 -> n95 // "Create" -> "Line"
+  n95 -> n96 // "Line" -> "600"
+  n95 -> n97 // "Line" -> "50"
+  n95 -> n98 // "Line" -> "650"
+  n95 -> n99 // "Line" -> "200"
+  n95 -> n100 // "Line" -> "800"
+  n95 -> n101 // "Line" -> "60"
+  n95 -> n102 // "Line" -> "810"
+  n95 -> n103 // "Line" -> "30"
+  n4 -> n104 // "LIST_INSTR" -> "Create"
+  n104 -> n105 // "Create" -> "tex"
+  n104 -> n106 // "Create" -> "Text"
+  n106 -> n107 // "Text" -> "500"
+  n106 -> n108 // "Text" -> "600"
+  n106 -> n109 // "Text" -> "\"OLA AM... YUTUB\""
 
 }

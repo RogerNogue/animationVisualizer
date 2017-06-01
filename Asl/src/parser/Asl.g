@@ -98,13 +98,8 @@ instruction
         |   destruction
         |   movement
         |   modify
-        /*
-        |   modifycolor
-        |   modifystroke
-        |   modifysize         //for quads and elypses
-        |   modifyradious
-        |   modifyVisibility
-        */
+        |   animate
+        |   rotation
         |   source
         |                   // Nothing
         ;
@@ -200,11 +195,19 @@ width           :   WIDTH^ '('! A1=atom ')'!
 height          :   HEIGHT^ '('! A1=atom ')'!
         ;
 
-//Visibility (ID, opacity)) //0<= opacity <= 1
+//Visibility (ID, opacity) //0<= opacity <= 1
 visibility      : VISIBILITY^ '('! A1=atom ')'!
         ;
 
 
+//Animate ID  (string parameter, double from, double to, double duration)
+//parameter can have = x, y, opacity...
+animate:  ANIMATE^ ID '('! STRING ','! A2=atom ','! A3=atom ','! A4=atom ')'!
+        ;
+
+//Rotation ( int angle, double x, double y, int anglef, double xf, double yf, double time) can be done on polygons (dontk know about others)    
+rotation:   ROTATE^ ID  '('! A1=atom ','! A2=atom ','! A3=atom ','! A4=atom ','! A5=atom ','! A6=atom ','! A7=atom')'!
+        ;
 
 source          :  SOURCE^ STRING  '('!  atom (','! atom )* ')'! 
         ;
@@ -289,6 +292,8 @@ TWORADIUS           : 'TwoRadius';
 HEIGHT              : 'Height';
 WIDTH               : 'Width';
 STROKE              : 'Stroke';
+ANIMATE             : 'Animate';
+ROTATE              : 'Rotate';
 SOURCE              : 'Source';
 
 

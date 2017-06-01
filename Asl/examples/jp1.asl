@@ -19,4 +19,13 @@ func main()
   Create lin Line(600,50,650,200,800,60,810,30);
   //text
   Create tex Text(500,600,"OLA AMIGOS DE YUTUB");
+  //animations
+  Animate q ("x",50,500,5);
+  Animate q ("y",50,500,5);
+  Animate q ("opacity",0.5,1.0,5);
+  Rotate poli(0, 200, 10, 360, 200, 10, 10);
+  Rotate tex(0, 500, 500, 360, 500, 500, 5);
+  Animate elip ("x",300,600,5);
+  Rotate elip (0, 300, 200, 360, 600, 200, 5);
+  Rotate lin (0, 650, 200, 360, 650, 200, 5);
 endfunc

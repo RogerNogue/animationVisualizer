@@ -153,6 +153,23 @@ digraph {
   n107 [label="500"];
   n108 [label="600"];
   n109 [label="\"OLA AM... YUTUB\""];
+  n110 [label="Animate"];
+  n110 [label="Animate"];
+  n111 [label="q"];
+  n112 [label="\"x\""];
+  n113 [label="50"];
+  n114 [label="200"];
+  n115 [label="10"];
+  n116 [label="Rotate"];
+  n116 [label="Rotate"];
+  n117 [label="poli"];
+  n118 [label="0"];
+  n119 [label="200"];
+  n120 [label="10"];
+  n121 [label="360"];
+  n122 [label="200"];
+  n123 [label="10"];
+  n124 [label="10"];
 
   n0 -> n1 // "LIST_FUNCTIONS" -> "func"
   n1 -> n2 // "func" -> "main"
@@ -263,5 +280,20 @@ digraph {
   n106 -> n107 // "Text" -> "500"
   n106 -> n108 // "Text" -> "600"
   n106 -> n109 // "Text" -> "\"OLA AM... YUTUB\""
+  n4 -> n110 // "LIST_INSTR" -> "Animate"
+  n110 -> n111 // "Animate" -> "q"
+  n110 -> n112 // "Animate" -> "\"x\""
+  n110 -> n113 // "Animate" -> "50"
+  n110 -> n114 // "Animate" -> "200"
+  n110 -> n115 // "Animate" -> "10"
+  n4 -> n116 // "LIST_INSTR" -> "Rotate"
+  n116 -> n117 // "Rotate" -> "poli"
+  n116 -> n118 // "Rotate" -> "0"
+  n116 -> n119 // "Rotate" -> "200"
+  n116 -> n120 // "Rotate" -> "10"
+  n116 -> n121 // "Rotate" -> "360"
+  n116 -> n122 // "Rotate" -> "200"
+  n116 -> n123 // "Rotate" -> "10"
+  n116 -> n124 // "Rotate" -> "10"
 
 }

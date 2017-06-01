@@ -3,17 +3,25 @@
 <body>
 <svg height="2000" width="2000">
        <rect x="10.0" y="10.0" width="60.0" height="60.0"  
-        style="fill:rgb(255,0,0);stroke:rgb(0,255,0);stroke-width:20.05;fill-opacity:1.0;stroke-opacity:1.0" />  
+        style="fill:rgb(255,0,0);stroke:rgb(0,255,0);stroke-width:20.05;fill-opacity:1.0;stroke-opacity:1.0" >    
+ <animate attributeType="XML" attributeName="x" from="50.0" to="500.0" dur="5.0" repeatCount="indefinite"/>  
+ <animate attributeType="XML" attributeName="y" from="50.0" to="500.0"dur="5.0" repeatCount="indefinite"/>   
+ <animate attributeType="XML" attributeName="opacity" from="0.5" to="1.0"dur="5.0" repeatCount="indefinite"/></rect>
        <circle cx="50.0" cy="650.0" r="50.0"
-        style="fill:rgb(255,0,0);;stroke:rgb(0,0,255);stroke-width:30.05;fill-opacity:0.5;stroke-opacity:0.5" />  
+        style="fill:rgb(255,0,0);;stroke:rgb(0,0,255);stroke-width:30.05;fill-opacity:0.5;stroke-opacity:0.5" >  </circle>
        <ellipse cx="200.0" cy="200.0" rx="200.0" ry="50.0"
-        style="fill:rgb(0,0,255);stroke:rgb(0,0,50);stroke-width:1.05;fill-opacity: 1.0;stroke-opacity: 1.0" />  
+        style="fill:rgb(0,0,255);stroke:rgb(0,0,50);stroke-width:1.05;fill-opacity: 1.0;stroke-opacity: 1.0" >    
+ <animate attributeType="XML" attributeName="x" from="300.0" to="600.0" dur="5.0" repeatCount="indefinite"/>  
+ <animateTransform attributeName="transform"attributeType="XML"type="rotate"from="0 200.0 360.0"to="300 600.0 200.0"dur="5.0s"repeatCount="indefinite"/></ellipse>
        <polygon points="200.0, 10.0 250.0, 190.0 160.0, 210.0 " 
-        style="fill:rgb(0,200,100);stroke:rgb(0,0,50);stroke-width:1.05;fill-opacity:1.0;stroke-opacity:1.0" />  
+        style="fill:rgb(0,200,100);stroke:rgb(0,0,50);stroke-width:1.05;fill-opacity:1.0;stroke-opacity:1.0" >    
+ <animateTransform attributeName="transform"attributeType="XML"type="rotate"from="0 10.0 360.0"to="200 200.0 10.0"dur="10.0s"repeatCount="indefinite"/></polygon>
        <polyline points="600.0, 50.0 650.0, 200.0 800.0, 60.0 810.0, 30.0 " 
-        style="fill:none;stroke:rgb(0,0,50);stroke-width:3.05;fill-opacity:1.0;stroke-opacity:1.0" />  
+        style="fill:none;stroke:rgb(0,0,50);stroke-width:3.05;fill-opacity:1.0;stroke-opacity:1.0" >    
+ <animateTransform attributeName="transform"attributeType="XML"type="rotate"from="0 200.0 360.0"to="650 650.0 200.0"dur="5.0s"repeatCount="indefinite"/></polyline>
        <text x="500.0" y="600.0" 
-    style="fill:rgb(0,0,255);stroke:rgb(0,0,50);stroke- width:1.05;fill-opacity:1.0;stroke-opacity:1.0"> "OLA AMIGOS DE YUTUB" </text>  
+    style="fill:rgb(0,0,255);stroke:rgb(0,0,50);stroke- width:1.05;fill-opacity:1.0;stroke-opacity:1.0"> "OLA AMIGOS DE YUTUB"  
+ <animateTransform attributeName="transform"attributeType="XML"type="rotate"from="0 500.0 360.0"to="500 500.0 500.0"dur="5.0s"repeatCount="indefinite"/></text>
 </svg>
 </body>
 </html>

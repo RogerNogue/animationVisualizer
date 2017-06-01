@@ -316,6 +316,8 @@ public class Interp {
             double par1, par2, par3, par4;
             int i = 0;
             String s;
+            Data aux;
+            Structure saux;
                 switch (t.getChild(1).getType()) {
                     case AslLexer.QUAD:
                         s = "quad";
@@ -397,6 +399,48 @@ public class Interp {
                     default: assert false; // Should never happen
                 }
                 return null;
+            //animations
+            case AslLexer.ANIMATE:
+                aux = Stack.getVariable(t.getChild(0).getText());
+                saux = aux.getStructure();
+                String st = t.getChild(1).getText();
+                System.out.print("el string es = " + st + "\n");
+                if(st.equals("\"x\"")){
+                    saux.set_animation_x(
+                                            evaluateExpression(t.getChild(2)).getDoubleValue(),
+                                            evaluateExpression(t.getChild(3)).getDoubleValue(),
+                                            evaluateExpression(t.getChild(4)).getDoubleValue()
+                                        );
+                }
+                else if(st.equals("\"y\"")){
+                    saux.set_animation_y(
+                                            evaluateExpression(t.getChild(2)).getDoubleValue(),
+                                            evaluateExpression(t.getChild(3)).getDoubleValue(),
+                                            evaluateExpression(t.getChild(4)).getDoubleValue()
+                                        );
+                }
+                else if(st.equals("\"opacity\"")){
+                    saux.set_animation_opacity(
+                                            evaluateExpression(t.getChild(2)).getDoubleValue(),
+                                            evaluateExpression(t.getChild(3)).getDoubleValue(),
+                                            evaluateExpression(t.getChild(4)).getDoubleValue()
+                                        );
+                }
+                return null;
+            case AslLexer.ROTATE:
+                aux = Stack.getVariable(t.getChild(0).getText());
+                saux = aux.getStructure();
+                //int angle1, int angle2, double startx, double starty, double endx, double endy, double time
+                saux.set_rotation   (
+                                        evaluateExpression(t.getChild(1)).getIntegerValue(),
+                                        evaluateExpression(t.getChild(2)).getIntegerValue(),
+                                        evaluateExpression(t.getChild(3)).getDoubleValue(),
+                                        evaluateExpression(t.getChild(4)).getDoubleValue(),
+                                        evaluateExpression(t.getChild(5)).getDoubleValue(),
+                                        evaluateExpression(t.getChild(6)).getDoubleValue(),
+                                        evaluateExpression(t.getChild(7)).getDoubleValue()
+                                    );
+                return null;
             //object delete
             case AslLexer.DESTRUCTION:
                 Stack.deleteVariable(t.getChild(0).getChild(0).getText());
@@ -404,8 +448,8 @@ public class Interp {
             case AslLexer.MODIFY:
                 switch (t.getChild(1).getType()) {
                     case AslLexer.COLOR:
-                        Data aux = Stack.getVariable(t.getChild(0).getText());
-                        Structure saux = aux.getStructure();
+                        aux = Stack.getVariable(t.getChild(0).getText());
+                        saux = aux.getStructure();
                         System.out.println(evaluateExpression(t.getChild(1).getChild(0)).getIntegerValue());
                         saux.set_fill_RGB(  evaluateExpression(t.getChild(1).getChild(0)).getIntegerValue(),
                                             evaluateExpression(t.getChild(1).getChild(1)).getIntegerValue(),
